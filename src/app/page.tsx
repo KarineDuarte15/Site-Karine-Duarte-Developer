@@ -1,9 +1,13 @@
 import Image from "next/image";
 
+// src/app/page.tsx
+import Header from "@/components/Header";
+
 export default function Home() {
   return (
     <main>
-      {/* O conteúdo do site virá aqui */}
+      <Header />
+      {/* Restante das seções */}
     </main>
   );
 }
