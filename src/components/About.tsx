@@ -14,37 +14,14 @@ const skills = [
 
 export default function About() {
   return (
-    <section id="about" className="py-24 bg-light-gray">
+    // Seção 1 - Você pode mudar a cor aqui (ex: bg-background)
+    <section id="about" className="py-24 text-center bg-background">
       <div className="container mx-auto px-6">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-16"
-        >
-          Sobre Mim
-        </motion.h2>
+        
 
-        <div className="grid md:grid-cols-5 gap-12 items-center">
-          {/* Coluna da Imagem (agora maior) */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="flex justify-center md:col-span-2"
-          >
-            <Image
-              src="/profile7.jpeg"
-              alt="Erika Karine Duarte"
-              width={500} // Imagem maior
-              height={500} // Imagem maior
-              className="rounded-full object-cover shadow-2xl" 
-            />
-          </motion.div>
+        <div className="grid md:grid-cols-5 gap-12 text-center items-center">
 
-          {/* Coluna do Texto (com texto novo e dinâmico) */}
+          {/* Coluna do Texto */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -52,17 +29,17 @@ export default function About() {
             viewport={{ once: true }}
             className="md:col-span-3"
           >
-            
-            <p className="text-dark-gray mb-6 text-lg">
-              Minha jornada na tecnologia começou com a curiosidade, mas se transformou em uma carreira focada em criar soluções. Com formação em Análise e Desenvolvimento de Sistemas, hoje eu conecto o poder do back-end com a inteligência da análise de dados para gerar impacto real.
+            <h2 className="text-4xl font-bold mb-4 text-foreground">Sobre Mim</h2>
+            <p className="text-muted mb-6 text-lg">
+                Minha jornada na tecnologia começou com a curiosidade, mas se transformou em uma carreira focada em criar soluções. Com formação em Análise e Desenvolvimento de Sistemas, hoje eu conecto o poder do back-end com a inteligência da análise de dados para gerar impacto real.
             </p>
-            <p className="text-primary-accent mb-8 text-lg">
+            <p className="text-muted mb-8 text-lg">
               Atuo como Desenvolvedora Full-Stack e Analista de Dados, utilizando um arsenal de tecnologias para construir sistemas eficientes, automatizar processos e transformar dados brutos em insights valiosos que impulsionam decisões.
             </p>
-
-            <div className="flex flex-wrap gap-3 mb-8">
+            <h3 className="text-2xl font-semibold mb-4 text-foreground">Habilidades Técnicas</h3>
+            <div className=" flex flex-wrap gap-3 mb-8">
               {skills.map((skill) => (
-                <span key={skill} className="bg-medium-blue text-white text-sm font-semibold px-4 py-2 rounded-full shadow-md">
+                <span key={skill} className="  bg-yellow-500 text-blue-950 text-sm font-semibold px-4 py-2 rounded-full shadow-md">
                   {skill}
                 </span>
               ))}
@@ -75,7 +52,23 @@ export default function About() {
             >
               <FaDownload />
               Download CV
-            </a>
+            </a> 
+          </motion.div>
+                    {/* Coluna da Imagem */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="flex justify-center md:col-span-2"
+          >
+            <Image
+              src="/profile7.jpeg" // Mantive a imagem que você estava usando
+              alt="Erika Karine Duarte"
+              width={700} // Ajustei um pouco o tamanho
+              height={700}
+              className="rounded-full  shadow-2xl" 
+            />
           </motion.div>
         </div>
       </div>

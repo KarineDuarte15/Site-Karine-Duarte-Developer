@@ -2,19 +2,27 @@
 
 @import "tailwindcss";
 
+@theme {
+  --color--background: #0D1B2A; /* Azul Marinho */
+  --color--foreground: #E5E5E5; /* Branco */
+  --color--card-background: #1B263B; /* Azul Médio */
+  --color--primary-accent: #F4C542; /* Amarelo Dourado */
+  --color--secondary-accent: #E5E5E5; /* Cinza Claro */
+  --color--text-muted: #E5E5E5; /* Cinza Claro */
 
+
+}
+/* Definimos as variáveis de cor para o tema claro */
 :root {
-    --background: #0D1B2A; /* Azul Marinho */
-    --foreground: #ffffff; /* Branco */
-    --card-background: #1B263B; /* Azul Médio */
-    --primary-accent: #F4C542; /* Amarelo Dourado */
-    --secondary-accent: #E5E5E5; /* Cinza Claro */
-    --text-muted: #E5E5E5; /* Cinza Claro */
+--background: #0D1B2A; /* Azul Marinho */
+--foreground: #E5E5E5; /* Branco */
+--card-background: #1B263B; /* Azul Médio */
+--primary-accent: #F4C542; /* Amarelo Dourado */
+--secondary-accent: #E5E5E5; /* Cinza Claro */
+--text-muted: #E5E5E5; /* Cinza Claro */
 }
 
-/* Opcional: Se você quiser um tema escuro no futuro, pode configurá-lo aqui.
-  Ele será ativado automaticamente se o sistema do usuário estiver em modo escuro.
-*/
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0D1B2A; /* Azul Marinho */
@@ -28,21 +36,38 @@
 /* Aplicamos as variáveis de cor ao corpo do documento */
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: var(--foreground);
+  border-color: var(--border);
+  section {
+    background: var(--background);
+  }
   color-scheme: light dark;
 }
+
 /* Estilos globais adicionais */
 a {
-  color: var(--primary-accent);
+
   text-decoration: none; 
 }
-a:hover {
-  text-decoration: underline;
-}
+
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'var(--font-montserrat)', serif;
 }
 p, li, span, div {
   font-family: 'var(--font-roboto)', sans-serif;
+}
+button {
+  font-family: 'var(--font-montserrat)', serif;
+}
+button:focus {
+  outline: 2px solid var(--primary-accent);
+  outline-offset: 2px;
+}
+input, textarea {
+  font-family: 'var(--font-roboto)', sans-serif;
+}
+input:focus, textarea:focus {
+  outline: 2px solid var(--primary-accent);
+  outline-offset: 2px;
 }

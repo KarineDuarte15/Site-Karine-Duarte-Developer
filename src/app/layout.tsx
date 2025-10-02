@@ -26,17 +26,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="pt-BR" className="scroll-smooth">
-      {/* Aqui aplicamos as variáveis das fontes ao body.
-        A classe `roboto.className` define Roboto como a fonte padrão.
-      */}
-      <body className={`${roboto.variable} ${montserrat.variable} bg-white text-navy font-sans`}>
+      <body className={`${roboto.variable} ${montserrat.variable} bg-background text-foreground`}>
         {children}
       </body>
     </html>
