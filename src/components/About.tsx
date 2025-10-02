@@ -7,9 +7,13 @@ import { FaDownload } from 'react-icons/fa';
 
 const skills = [
     "Python", "FastAPI", "Django", "JavaScript", "React", "Java",
-    "SQL", "PostgreSQL", "MySQL", "Docker", "Supabase", "Pandas",
-    "Power BI", "Tableau", "Git", "GitHub", "Agile Methodologies", "Scrum",
-    "Data Analysis", "Data Visualization", "ETL", "Machine Learning", "NLP"
+    "Spring Boot", "Node.js", "Express.js", "TypeScript","Next.js",
+    "HTML", "CSS", "TailwindCSS", "Framer Motion", "Git", "GitHub",
+    "Data Analysis","Machine Learning", "SQL", "NoSQL", 
+    "Oracle","PostgreSQL", "MySQL", "Docker", "Supabase", "Pandas",
+    'docker', 'numpy', 'wordpress', 'flask','plotly','pynumber',
+    'tabula-py',"Power BI", "Tableau",
+    "Git", "GitHub", "Agile Methodologies", "Scrum","ETL"
 ];
 
 export default function About() {
