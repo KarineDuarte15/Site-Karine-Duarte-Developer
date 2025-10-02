@@ -5,26 +5,32 @@ import Image from 'next/image';
 
 export default function Header() {
   return (
-    <header className="fixed top-0 left-0 w-full bg-gray-900 bg-opacity-80 backdrop-blur-sm z-50">
-      <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <Link href="/" className="flex items-center space-x-2">
-            <Image src="/Logo Karine developer.png" alt="Logo Karine Duarte" width={50} height={50} className="rounded-full"/>
-             <span className="font-bold text-xl hidden sm:block">Karine Duarte</span>
+    // Veja como as classes ficaram mais limpas: bg-background, border-card
+    <header className="fixed top-0 left-0 w-full bg-background/90 backdrop-blur-sm z-50 border-b border-card">
+      <nav className="container mx-auto px-6 py-3 flex justify-between items-center">
+        <Link href="/" className="flex items-center space-x-3">
+            <Image src="/Logo1.png" alt="Logo Karine Duarte" width={50} height={50} />
+             {/* Usando text-foreground */}
+             <span className="font-bold text-xl text-foreground">Karine Duarte</span>
         </Link>
 
-        <div className="hidden md:flex items-center space-x-8">
-          <Link href="#about" className="hover:text-yellow-400 transition-colors">Sobre mim</Link>
-          <Link href="#projects" className="hover:text-yellow-400 transition-colors">Projetos</Link>
-          <Link href="#blog" className="hover:text-yellow-400 transition-colors">Blog</Link>
-          <Link href="#contact" className="hover:text-yellow-400 transition-colors">Contato</Link>
+        <div className="hidden md:flex items-center space-x-8 font-semibold">
+          {/* Usando text-foreground, hover:text-accent, e after:bg-accent */}
+          <Link href="#about" className="relative text-foreground hover:text-accent transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-[-5px] after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">
+            Sobre mim
+          </Link>
+          <Link href="#journey" className="relative text-foreground hover:text-accent transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-[-5px] after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">Jornada</Link>
+          <Link href="#projects" className="relative text-foreground hover:text-accent transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-[-5px] after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">Projetos</Link>
+          <Link href="#blog" className="relative text-foreground hover:text-accent transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-[-5px] after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">Blog</Link>
+          <Link href="#contact" className="relative text-foreground hover:text-accent transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:bottom-[-5px] after:h-[2px] after:w-0 after:bg-accent after:transition-all after:duration-300 hover:after:w-full">Contato</Link>
         </div>
 
         <div className="flex items-center space-x-4">
           <a href="https://github.com/KarineDuarte15" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <FaGithub className="w-6 h-6 hover:text-yellow-400 transition-colors" />
+            <FaGithub className="w-6 h-6 text-foreground hover:text-accent transition-colors" />
           </a>
           <a href="https://www.linkedin.com/in/karine-duarte-759ba02bb/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <FaLinkedin className="w-6 h-6 hover:text-yellow-400 transition-colors" />
+            <FaLinkedin className="w-6 h-6 text-foreground hover:text-accent transition-colors" />
           </a>
         </div>
       </nav>

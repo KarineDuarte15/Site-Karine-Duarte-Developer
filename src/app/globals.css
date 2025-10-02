@@ -1,26 +1,48 @@
+/* src/app/globals.css */
+
 @import "tailwindcss";
 
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+    --background: #0D1B2A; /* Azul Marinho */
+    --foreground: #ffffff; /* Branco */
+    --card-background: #1B263B; /* Azul Médio */
+    --primary-accent: #F4C542; /* Amarelo Dourado */
+    --secondary-accent: #E5E5E5; /* Cinza Claro */
+    --text-muted: #E5E5E5; /* Cinza Claro */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
+/* Opcional: Se você quiser um tema escuro no futuro, pode configurá-lo aqui.
+  Ele será ativado automaticamente se o sistema do usuário estiver em modo escuro.
+*/
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0D1B2A; /* Azul Marinho */
+    --foreground: #E5E5E5; /* Cinza Claro */
+    --card-background: #1B263B; /* Azul Médio */
+    --primary-accent: #F4C542; /* Amarelo Dourado */
+    --secondary-accent: #E5E5E5; /* Cinza Claro */
+    --text-muted: #E5E5E5; /* Cinza Claro */
   }
 }
-
+/* Aplicamos as variáveis de cor ao corpo do documento */
 body {
-  background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  color-scheme: light dark;
+}
+/* Estilos globais adicionais */
+a {
+  color: var(--primary-accent);
+  text-decoration: none; 
+}
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'var(--font-montserrat)', serif;
+}
+p, li, span, div {
+  font-family: 'var(--font-roboto)', sans-serif;
 }
