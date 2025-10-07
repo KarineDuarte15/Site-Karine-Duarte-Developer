@@ -36,7 +36,7 @@ export default function Hero() {
             className="flex justify-center"
           >
             <Image
-              src="/profile5.png" 
+              src="/profile9.png" 
               alt="Karine Duarte"
               width={450}
               height={450}
