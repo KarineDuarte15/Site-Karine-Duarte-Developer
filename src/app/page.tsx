@@ -3,9 +3,9 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Journey from "@/components/Journey";
-import Projects from "@/components/Projects"; // Comentado por enquanto
-// import Blog from "@/components/Blog";       // Comentado por enquanto
-// import Contact from "@/components/Contact";   // Comentado por enquanto
+import Projects from "@/components/Projects"; 
+import Blog from "@/components/Blog";  
+import Contact from "@/components/Contact";   
 
 export default function Home() {
   return (
@@ -15,9 +15,8 @@ export default function Home() {
       <About />
       <Journey />
       <Projects />
-      {/* <Blog /> */}
-      {/* <Contact /> */}
-      {/* Restante das seções virão aqui */}
+      <Blog />
+      <Contact />
     </main>
   );
 }

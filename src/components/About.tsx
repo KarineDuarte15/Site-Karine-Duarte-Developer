@@ -6,14 +6,7 @@ import { motion } from 'framer-motion';
 import { FaDownload } from 'react-icons/fa';
 
 const skills = [
-    "Python", "FastAPI", "Django", "JavaScript", "React", "Java",
-    "Spring Boot", "Node.js", "Express.js", "TypeScript","Next.js",
-    "HTML", "CSS", "TailwindCSS", "Framer Motion", "Git", "GitHub",
-    "Data Analysis","Machine Learning", "SQL", "NoSQL", 
-    "Oracle","PostgreSQL", "MySQL", "Docker", "Supabase", "Pandas",
-    'docker', 'numpy', 'wordpress', 'flask','plotly','pynumber',
-    'tabula-py',"Power BI", "Tableau",
-    "Git", "GitHub", "Agile Methodologies", "Scrum","ETL"
+    "Python", "FastAPI", "Django", "JavaScript", "React", "Java", "Spring Boot", "Node.js", "Express.js", "TypeScript", "Next.js", "HTML", "CSS", "TailwindCSS", "Git", "GitHub", "SQL", "NoSQL", "Oracle", "PostgreSQL", "MySQL", "Docker", "Supabase", "Pandas", "Power BI", "Tableau", "Agile Methodologies", "Scrum", "ETL"
 ];
 
 export default function About() {
@@ -64,7 +57,7 @@ export default function About() {
             className="flex justify-center md:col-span-2"
           >
             <Image
-              src="/profile7.jpeg" // Mantive a imagem que você estava usando
+              src="/profile11.png" 
               alt="Erika Karine Duarte"
               width={800} // Ajustei um pouco o tamanho
               height={800}
