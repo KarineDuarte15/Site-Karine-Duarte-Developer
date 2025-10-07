@@ -19,7 +19,7 @@ const blogPosts = [
 
 export default function Blog() {
   return (
-    <section id="blog" className="py-24 bg-background">
+    <section id="blog" className="py-30 bg-background">
       <div className="container mx-auto px-6">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}

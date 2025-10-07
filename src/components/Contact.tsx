@@ -33,12 +33,12 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 bg-background">
+    <section id="contact" className="py-24 bg-[color:var(--foreground)]">
       <div className="container mx-auto px-6">
         <motion.h2 /* ... */ className="text-4xl font-bold text-center mb-4 font-heading text-foreground">
           Entre em Contato
         </motion.h2>
-        <motion.p /* ... */ className="text-center text-muted mb-12 max-w-2xl mx-auto">
+        <motion.p /* ... */ className="text-center text-accent mb-12 max-w-2xl mx-auto">
           Tem uma pergunta, proposta ou apenas quer dizer um &quot;oi&quot;? Ficarei feliz em ouvir de você. Preencha o formulário abaixo.
         </motion.p>
 

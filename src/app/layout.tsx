@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 // Importa as fontes do Google
 import { Montserrat, Roboto } from "next/font/google";
 import "./globals.css";
+import WhatsAppButton from "@/components/WhatsAppButton";
+import ContactModal from "@/components/ContactModal";
 
 // Configura a fonte para os textos corridos (corpo)
 const roboto = Roboto({
@@ -31,6 +33,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="pt-BR" className="scroll-smooth">
       <body className={`${roboto.variable} ${montserrat.variable} bg-background text-foreground`}>
         {children}
+        <ContactModal />
+        <WhatsAppButton />
       </body>
     </html>
   );

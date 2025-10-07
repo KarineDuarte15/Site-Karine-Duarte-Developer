@@ -55,7 +55,7 @@ const projectsData = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-0 bg-card">
+    <section id="projects" className="py-30 bg-card">
       <div className="container bg-[color:var(--foreground)] mx-auto px-6">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
