@@ -9,7 +9,7 @@ import { FiExternalLink } from 'react-icons/fi';
 const projectsData = [
   {
     title: 'Sistema de Automação de Relatórios Contábeis',
-    description: 'Sistema completo para automação, com extração e processamento de dados a partir de PDFs, gerando relatórios inteligentes com gráficos e envio automático para clientes. [cite: 53, 7]',
+    description: 'Sistema completo para automação, com extração e processamento de dados a partir de PDFs, gerando relatórios inteligentes com gráficos e envio automático para clientes.',
     technologies: ['Python', 'FastAPI', 'Pandas', 'PostgreSQL', 'Docker', 'API Integration'],
     githubUrl: 'https://github.com/KarineDuarte15/LUCID-COUNT', // TODO: Substituir pelo link do seu repositório
     demoUrl: null, // Deixe null se não houver link para demo
@@ -55,7 +55,7 @@ const projectsData = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-30 bg-card">
+     <section id="projects" className="py-24 bg-card">
       <div className="container bg-[color:var(--foreground)] mx-auto px-6">
         <motion.h2
           initial={{ opacity: 0, y: -20 }}

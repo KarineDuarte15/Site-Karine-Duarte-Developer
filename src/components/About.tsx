@@ -61,7 +61,7 @@ export default function About() {
               alt="Erika Karine Duarte"
               width={800} // Ajustei um pouco o tamanho
               height={800}
-              className="rounded-full  shadow-2xl" 
+              
             />
           </motion.div>
         </div>
