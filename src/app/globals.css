@@ -27,11 +27,9 @@
 /* Aplicamos as variáveis de cor ao corpo do documento */
 body {
   color: var(--foreground);
-  background: var(--foreground);
+  background-color: var(--background);
   border-color: var(--border);
-  section {
-    background: var(--background);
-  }
+
   color-scheme: light dark;
 }
 
@@ -69,7 +67,7 @@ input:focus, textarea:focus {
 }
 
 .animate-marquee {
-  animation: marquee 30s linear infinite;
+  animation: marquee 40s linear infinite;
 }
 
 /* Opcional: Pausa a animação quando o mouse está por cima */
