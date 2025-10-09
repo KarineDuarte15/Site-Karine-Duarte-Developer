@@ -20,9 +20,8 @@ export default function Contact() {
     const message = formData.get('message') as string;
 
     const { error } = await supabase
-      .from('contacts')
+      .from('contatos') 
       .insert([{ name, email, message }]);
-
     if (error) {
       setStatus('Erro ao enviar. Tente novamente.');
       console.error('Erro do Supabase:', error);

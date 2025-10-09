@@ -10,7 +10,6 @@ import { supabase } from '@/lib/supabaseClient';
 export default function ContactModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [status, setStatus] = useState('');
-  // Novo estado para controlar a preferência de contato
   const [contactPreference, setContactPreference] = useState('Via WhatsApp');
 
   useEffect(() => {
@@ -39,7 +38,7 @@ export default function ContactModal() {
     
     const { error } = await supabase
       .from('contacts_modal')
-      .insert([{ name, phone, email, city, activity, contact_preference: contactPreference }]); // Enviando o estado da preferência
+      .insert([{ name, phone, email, city, activity, contact_preference: contactPreference }]);
 
     if (error) {
       setStatus('Erro ao enviar. Tente novamente.');
@@ -51,10 +50,6 @@ export default function ContactModal() {
     }
   };
   
-  if (!isOpen) {
-    return null;
-  }
-
   return (
     <AnimatePresence>
       {isOpen && (
@@ -65,12 +60,15 @@ export default function ContactModal() {
           className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
           onClick={() => setIsOpen(false)}
         >
+          {/* AS MUDANÇAS ESTÃO AQUI ABAIXO */}
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 200, damping: 25 }}
-            className="bg-white rounded-xl shadow-2xl w-full max-w-4xl relative overflow-hidden"
+            // 1. max-h-[90vh]: Limita a altura do modal a 90% da altura da tela.
+            // 2. overflow-y-auto: Cria uma barra de rolagem se o conteúdo for maior que a altura máxima.
+            className="bg-white rounded-xl shadow-2xl w-full max-w-4xl relative max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <button 
@@ -81,10 +79,9 @@ export default function ContactModal() {
               <FaTimes size={20} />
             </button>
             
+            {/* O layout de grid já é responsivo por padrão (empilha em telas pequenas) */}
             <div className="grid md:grid-cols-2">
-              {/* Coluna da Esquerda: Texto e Imagem */}
               <div className="p-8 md:p-10 flex flex-col justify-center bg-gray-50/50 relative">
-                 {/* Pontos decorativos */}
                 <div className="absolute bottom-8 left-8 grid grid-cols-5 gap-2 opacity-30">
                   {Array.from({ length: 25 }).map((_, i) => (
                     <div key={i} className="w-1.5 h-1.5 bg-blue-200 rounded-full"></div>
@@ -94,12 +91,10 @@ export default function ContactModal() {
                 <h2 className="text-3xl font-bold text-[#0D1B2A] mb-3" style={{ fontFamily: 'var(--font-montserrat)' }}>Ficou com alguma dúvida?</h2>
                 <p className="text-gray-500 mb-6">Preencha as informações ao lado que em breve entraremos em contato com você.</p>
                 <div className="relative w-48 h-48 rounded-md overflow-hidden self-center">
-                  
                   <Image src="/profile11.png" alt="Karine Duarte" layout="fill" objectFit="cover" />
                 </div>
               </div>
 
-              {/* Coluna da Direita: Formulário */}
               <div className="p-8 md:p-10">
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
