@@ -13,6 +13,13 @@ const projectsData = [
     githubUrl: 'https://github.com/KarineDuarte15/LUCID-COUNT',
     demoUrl: null,
   },
+      {
+    title: 'website Lumen Consultoria',
+    description: 'Site institucional para a Lumen Consultoria, uma empresa especializada em soluções contábeis e financeiras. O site apresenta os serviços oferecidos, equipe e informações de contato.',
+    technologies: ['vite', 'React', 'TypeScript', 'TailwindCSS', 'Framer Motion','Docker', 'typed.js'],
+    githubUrl: 'https://github.com/KarineDuarte15/ProjetoSiteLumenConsultoria',
+    demoUrl: 'https://www.lumenconsultoriabrasil.com.br/',
+  },
   {
     title: 'Projeto Site TaxMed',
     description: 'Website institucional para a empresa TaxMed, especializada em soluções fiscais para o setor de saúde. O site apresenta os serviços oferecidos, equipe e informações de contato.',
@@ -41,13 +48,7 @@ const projectsData = [
     githubUrl: 'https://github.com/KarineDuarte15/CRM-Customers',
     demoUrl: '#',
   },
-    {
-    title: 'Conexão Viva - Plataforma de Ajuda Psicológica',
-    description: 'A aplicação Conexão Viva, uma plataforma de ajuda psicológica. O site apresenta informações sobre os serviços oferecidos, equipe e formas de contato.',
-    technologies: ['vite', 'React', 'TypeScript', 'TailwindCSS', 'Framer Motion','Docker', 'typed.js'],
-    githubUrl: 'https://github.com/MaryaJoSo/conexao-viva',
-    demoUrl: '#',
-  },
+
 ];
 
 export default function Projects() {
