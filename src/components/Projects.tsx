@@ -13,7 +13,7 @@ const projectsData = [
     githubUrl: 'https://github.com/KarineDuarte15/LUCID-COUNT',
     demoUrl: null,
   },
-      {
+ {
     title: 'website Lumen Consultoria',
     description: 'Site institucional para a Lumen Consultoria, uma empresa especializada em soluções contábeis e financeiras. O site apresenta os serviços oferecidos, equipe e informações de contato.',
     technologies: ['vite', 'React', 'TypeScript', 'TailwindCSS', 'Framer Motion','Docker', 'typed.js'],

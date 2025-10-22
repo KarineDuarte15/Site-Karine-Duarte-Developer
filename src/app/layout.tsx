@@ -6,6 +6,7 @@ import "./globals.css";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ContactModal from "@/components/ContactModal";
 
+
 // Configura a fonte para os textos corridos (corpo)
 const roboto = Roboto({
   subsets: ["latin"],
