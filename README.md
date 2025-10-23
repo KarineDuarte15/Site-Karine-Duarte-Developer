@@ -1,9 +1,8 @@
 # Portfólio Karine Duarte - Desenvolvedora Full-Stack e Analista de Dados
 
-![Logo](public/Logo1.png)
+<img src="public/Logo1.png" alt="Logo Karine Duarte Developer" width="150"/>
 
 Este é o repositório do meu portfólio pessoal, desenvolvido para apresentar as minhas competências, experiência e projetos na área de desenvolvimento Full-Stack e análise de dados.
-
 **Visita o site:** [https://site-karine-duarte-developer.vercel.app/](https://site-karine-duarte-developer.vercel.app/) (Substitui, se necessário, pelo URL final do deploy)
 
 ---
@@ -41,50 +40,7 @@ Este é o repositório do meu portfólio pessoal, desenvolvido para apresentar a
 
 ---
 
-## ⚙️ Como Começar
 
-Para executar este projeto localmente, segue estes passos:
-
-1.  **Clona o repositório:**
-    ```bash
-    git clone [https://github.com/KarineDuarte15/Site-Karine-Duarte-Developer.git](https://github.com/KarineDuarte15/Site-Karine-Duarte-Developer.git)
-    cd Site-Karine-Duarte-Developer
-    ```
-
-2.  **Instala as dependências:**
-    ```bash
-    npm install
-    # ou
-    yarn install
-    # ou
-    pnpm install
-    # ou
-    bun install
-    ```
-
-3.  **Configura as Variáveis de Ambiente:**
-    * Cria um ficheiro chamado `.env.local` na raiz do projeto.
-    * Adiciona as tuas credenciais do Supabase (necessárias para os formulários de contacto):
-        ```plaintext
-        NEXT_PUBLIC_SUPABASE_URL=A_TUA_URL_SUPABASE
-        NEXT_PUBLIC_SUPABASE_ANON_KEY=A_TUA_CHAVE_ANON_SUPABASE
-        ```
-    * Podes encontrar estas credenciais no painel do teu projeto Supabase em `Project Settings` > `API`.
-
-4.  **Executa o servidor de desenvolvimento:**
-    ```bash
-    npm run dev
-    # or
-    yarn dev
-    # or
-    pnpm dev
-    # or
-    bun dev
-    ```
-
-5.  Abre [http://localhost:3000](http://localhost:3000) no teu navegador para ver o resultado.
-
----
 
 ## 🚀 Deployment
 
