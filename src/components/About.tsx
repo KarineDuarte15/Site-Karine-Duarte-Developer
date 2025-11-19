@@ -33,7 +33,7 @@ const skills = [
     "Python", "FastAPI", "Django", "JavaScript", "React", "Java", "Spring Boot", "Node.js", "Express.js", "TypeScript", "Next.js", "HTML", "CSS", "TailwindCSS", "Git", "GitHub", "SQL", "NoSQL", "Oracle", "PostgreSQL", "MySQL", "Docker", "Supabase", "Pandas", "Power BI", "Tableau", "Agile Methodologies", "Scrum", "ETL"
 ];
 
-const skillIcons: Record<string, any> = {
+const skillIcons: Record<string, React.ElementType> = {
   "Python": SiPython,
   "FastAPI": SiFastapi,
   "Django": SiDjango,
