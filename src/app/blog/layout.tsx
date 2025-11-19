@@ -1,6 +1,6 @@
 // src/app/blog/layout.tsx
 import Header from "@/components/Header";
-
+import WhatsAppButton from "@/components/WhatsAppButton";
 import Footer from "@/components/Footer";
 
 
@@ -17,6 +17,7 @@ export default function BlogLayout({
         {children}
       </main>
       <Footer />
+      <WhatsAppButton />
     </>
   );
 }
