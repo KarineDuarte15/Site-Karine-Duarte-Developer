@@ -4,31 +4,25 @@
 import { TypeAnimation } from 'react-type-animation';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import InteractiveBackground from './InteractiveBackground';
 
 export default function Hero() {
   return (
     // 👇 MUDANÇA 1: Removemos 'flex' e 'items-center' e adicionamos 'bg-background' 👇
     <section id="home" className="relative w-full pt-32 pb-16 overflow-hidden bg-background">
-      
-      {/* Camada de Fundo com o Vídeo */}
-      {/* 👇 MUDANÇA 2: Trocamos 'inset-0' por 'inset-8' para criar uma moldura 👇 */}
-      <div className="absolute inset-8 z-0 opacity-20 bg-blue-950 rounded-lg overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover rounded-lg" // Adicionado rounded-lg para suavizar as bordas
-        >
-          <source src="/hero-background.mp4" type="video/mp4" />
-          Seu navegador não suporta o vídeo.
-        </video>
+
+      {/* Camada de Fundo com a Animação de Partículas */}
+      {/* 👇 Mantido 'inset-8' para criar a moldura solicitada */}
+      <div className="absolute inset-4 md:inset-8 z-0 bg-blue-950/20 rounded-2xl overflow-hidden border border-white/5 shadow-2xl">
+        {/* Substituição do Video pelo Componente Interativo */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background/90 z-10 pointer-events-none"></div>
+        <InteractiveBackground />
       </div>
 
       {/* Conteúdo Principal */}
       <div className="relative z-10 container mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-8 items-center">
-          
+
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -36,7 +30,7 @@ export default function Hero() {
             className="flex justify-center"
           >
             <Image
-              src="/profile9.png" 
+              src="/profile9.png"
               alt="Karine Duarte"
               width={450}
               height={450}

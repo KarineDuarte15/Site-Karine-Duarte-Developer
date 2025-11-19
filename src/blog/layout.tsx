@@ -12,7 +12,7 @@ export default function BlogLayout({
     <>
       <Header />
       <main className="pt-24"> 
-        {/* pt-24 para dar espaço para o Header fixo */}
+        
         {children}
       </main>
       <Footer />
