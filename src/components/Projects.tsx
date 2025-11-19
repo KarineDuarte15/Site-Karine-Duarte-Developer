@@ -38,7 +38,7 @@ const projectsData = [
     title: 'Website Imóveis Zeferino',
     description: 'Website institucional para Imóveis Zeferino, Corretora focada em oferecer as melhores opções de imóveis residenciais e comerciais. O site apresenta os imóveis disponíveis, serviços oferecidos e informações de contato.',
     technologies: ['Next.js', 'React', 'TypeScript', 'TailwindCSS', 'Framer Motion'],
-    githubUrl: 'https://github.com/KarineDuarte15/ProjetoLeaoTechFinal',
+    githubUrl: 'https://github.com/KarineDuarte15/ProjetoSiteZeferinoOficial',
     demoUrl: 'https://imoveiszeferino.com.br/',
   },
    {
