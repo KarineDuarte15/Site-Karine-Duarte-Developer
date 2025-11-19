@@ -30,7 +30,7 @@ export default function Header() {
 
         <div className="hidden md:flex items-center space-x-4">
           <Link href="/#about" className="font-bold px-3 py-2 text-[#0D1B2A] hover:text-yellow-500 scale-105 hover:-translate-y-1 hover:shadow-xl transition-all">Sobre mim</Link>
-          <Link href="/#abort" className="font-bold px-3 py-2 text-[#0D1B2A] hover:text-yellow-500 scale-105 hover:-translate-y-1 hover:shadow-xl transition-all">Habilidades</Link>
+          <Link href="/#about" className="font-bold px-3 py-2 text-[#0D1B2A] hover:text-yellow-500 scale-105 hover:-translate-y-1 hover:shadow-xl transition-all">Habilidades</Link>
           <Link href="/#journey" className="font-bold px-3 py-2 text-[#0D1B2A] hover:text-yellow-500 scale-105 hover:-translate-y-1 hover:shadow-xl transition-all">Jornada</Link>
           <Link href="/#projects" className="font-bold px-3 py-2 text-[#0D1B2A] hover:text-yellow-500 scale-105 hover:-translate-y-1 hover:shadow-xl transition-all">Projetos</Link>
           <Link href="/#blog" className="font-bold px-3 py-2 text-[#0D1B2A] hover:text-yellow-500 scale-105 hover:-translate-y-1 hover:shadow-xl transition-all">Blog</Link>
