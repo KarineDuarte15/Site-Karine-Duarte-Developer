@@ -23,7 +23,7 @@ export default function Footer() {
             <a href="https://github.com/KarineDuarte15" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
               <FaGithub className="w-7 h-7 text-muted hover:text-accent transition-transform hover:scale-110 duration-300" />
             </a>
-            <a href="https://www.linkedin.com/in/karine-duarte-759ba02bb-" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/karine-duarte-759ba02bb/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
               <FaLinkedin className="w-7 h-7 text-muted hover:text-accent transition-transform hover:scale-110 duration-300" />
             </a>
           </div>

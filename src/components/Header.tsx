@@ -42,7 +42,7 @@ export default function Header() {
           <a href="https://github.com/KarineDuarte15" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <FaGithub className="font-bold cursor-pointer w-6 h-6 text-[#0D1B2A] hover:text-yellow-500 scale-105 hover:-translate-y-1 hover:shadow-xl transition-all" />
           </a>
-          <a href="https://www.linkedin.com/in/karine-duarte-759ba02bb-" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/karine-duarte-759ba02bb/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <FaLinkedin className="font-bold cursor-pointer w-6 h-6 text-[#0D1B2A] hover:text-yellow-500 scale-105 hover:-translate-y-1 hover:shadow-xl transition-all" />
           </a>
         </div>
