@@ -4,7 +4,6 @@
 import { FaBriefcase, FaGraduationCap } from 'react-icons/fa';
 
 const journeyData = [
-  // ... (seus dados, que já estão corretos)
   {
     icon: <FaBriefcase />,
     year: '2025',
@@ -54,6 +53,7 @@ const journeyData = [
     company: 'Senac',
     description: 'Formação técnica para programação de sistemas.',
   },
+  // Duplicando itens para garantir um loop suave se houver poucos itens na tela larga
   {
     icon: <FaBriefcase />,
     year: '2025',
@@ -105,41 +105,57 @@ const journeyData = [
   },
 ];
 
-
 export default function Journey() {
   return (
-    <section id="journey" className="py-24 bg-light-background">
-      <div className="container mx-auto">
+    // Removemos padding horizontal da section para permitir full-width
+    <section id="journey" className="py-20 bg-light-background overflow-hidden">
+      
+      {/* Container APENAS para o título, para mantê-lo centralizado e alinhado */}
+      <div className="container mx-auto px-20">
         <h2 className="text-4xl font-bold text-center mb-16 font-heading text-header-text">
           Minha Jornada
         </h2>
+      </div>
 
-        <div className="group relative w-full overflow-hidden">
-          {/* 👇 A CORREÇÃO PRINCIPAL ESTÁ AQUI: 'inline-flex' 👇 */}
-          <div className="relative inline-flex animate-marquee">
-            
-            <div className="absolute top-1/2 left-0 h-0.5 w-full bg-[#F4C542] -translate-y-1/2 z-0"></div>
-            
-            {journeyData.map((item, index) => (
-              <div key={index} className="relative flex-shrink-0 w-110 h-110 flex items-center justify-center">
-                
-                <div className="absolute top-1/2 -translate-y-1/2 z-20">
-                  <div className="flex items-center justify-center w-10 h-10 bg-header-text rounded-full border-20 border-[#F4C542]">
-                    <div className="text-accent">{item.icon}</div>
-                  </div>
+      {/* A div da animação agora está FORA do container, ocupando w-full (100% da tela) */}
+      <div className="group relative w-full overflow-hidden">
+        <div className="relative inline-flex animate-marquee">
+          
+          {/* Linha do tempo */}
+          <div className="absolute top-1/2 left-0 h-0.5 w-full bg-[#F4C542] -translate-y-1/2 z-0"></div>
+          
+          {journeyData.map((item, index) => (
+            <div key={index} className="relative flex-shrink-0 w-[500px] h-[600px] flex items-center justify-center mx-4">
+              
+              {/* Ícone central na linha */}
+              <div className="absolute top-1/2 -translate-y-1/2 z-20 left-1/2 -translate-x-1/2">
+                <div className="flex items-center justify-center w-12 h-12 bg-header-text rounded-full border-4 border-[#F4C542] bg-[#0D1B2A]">
+                  <div className="text-accent text-xl">{item.icon}</div>
                 </div>
-
-                <div className={`absolute left-1/2 -translate-x-1/2 w-72 bg-header-bg p-4 rounded-lg shadow-md border-2 border-accent z-10
-                  ${index % 2 === 0 ? 'bottom-1/2 mb-6' : 'top-1/2 mt-6'}`}
-                >
-                  <time className="text-xs font-semibold text-header-text/70">{item.year} - {item.company}</time>
-                  <h3 className="text-md font-bold mt-1 mb-1 font-heading text-header-text">{item.title}</h3>
-                  <p className="text-sm text-header-text/90 whitespace-normal">{item.description}</p>
-                </div>
-
               </div>
-            ))}
-          </div>
+
+              {/* Card de Conteúdo - Alternando Cima/Baixo */}
+              <div 
+                className={`absolute left-1/2 -translate-x-1/2 w-80 bg-header-bg p-6 rounded-lg shadow-xl border border-accent/30 z-10 hover:scale-105 transition-transform duration-300 bg-[#1B263B]
+                ${index % 2 === 0 ? 'bottom-[60%] mb-4' : 'top-[60%] mt-4'}`}
+              >
+                {/* Seta indicativa */}
+                <div 
+                  className={`absolute left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent
+                  ${index % 2 === 0 
+                    ? 'bottom-[-10px] border-t-[10px] border-t-[#1B263B]' 
+                    : 'top-[-10px] border-b-[10px] border-b-[#1B263B]'
+                  }`}
+                ></div>
+
+                <time className="text-xs font-bold text-[#F4C542] uppercase tracking-wider">{item.year}</time>
+                <div className="text-xs text-gray-400 mb-2">{item.company}</div>
+                <h3 className="text-lg font-bold mb-2 font-heading text-white leading-tight">{item.title}</h3>
+                <p className="text-sm text-gray-300 leading-relaxed">{item.description}</p>
+              </div>
+
+            </div>
+          ))}
         </div>
       </div>
     </section>

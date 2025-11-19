@@ -2,7 +2,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-// Este layout envolve todas as páginas de blog
+
 export default function BlogLayout({
   children,
 }: {

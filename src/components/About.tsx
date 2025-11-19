@@ -69,7 +69,7 @@ export default function About() {
   return (
     
     <section id="about" className="py-0 text-center bg-[#E5E5E5]">
-      <div className="container mx-auto px-6 gap-3 rounded-lg p-12 shadow-2xl">
+      <div className="container mx-auto px-6 gap-3  p-12 ">
        <div className="font-extralight grid md:grid-cols-5 gap-25 text-left bg-[#E5E5E5] items-center">
           {/* Coluna do Texto */}
           <motion.div
@@ -79,7 +79,7 @@ export default function About() {
             viewport={{ once: true }}
             className="md:col-span-3"
           >
-            <h2 className="text-4xl text-blue-950 font-bold mb-4 text-left">Sobre Mim</h2>
+            <h2 className="text-4xl font-bold text-center text-blue-950 mb-4">Sobre Mim</h2>
             <p className="text-muted text-blue-950 mb-6 text-lg">
                 Minha jornada na tecnologia começou com a curiosidade, mas se transformou em uma carreira focada em criar soluções. Com formação em Análise e Desenvolvimento de Sistemas, hoje eu conecto o poder do back-end com a inteligência da análise de dados para gerar impacto real.
             </p>

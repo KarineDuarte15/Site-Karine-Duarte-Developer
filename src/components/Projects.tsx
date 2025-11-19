@@ -54,11 +54,8 @@ const projectsData = [
 export default function Projects() {
   return (
     // Definimos um fundo escuro para a seção inteira
-    <section id="projects" className="py-24 bg-background">
-      {/* 1. CORREÇÃO DO ESPAÇAMENTO:
-        Adicionamos 'py-16' (padding vertical) a este container para criar um respiro 
-        entre o conteúdo e as seções vizinhas.
-      */}
+    <section id="projects" className="py-24 bg-[#E5E5E5]">
+      
       <div className="container bg-[#E5E5E5] mx-auto px-6 py-16 rounded-lg">
         {/* 2. CORREÇÃO DO TÍTULO:
           Colocamos o texto "Meus Projetos" de volta e ajustamos a cor para escuro.
