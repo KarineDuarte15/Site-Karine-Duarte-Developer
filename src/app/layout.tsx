@@ -22,8 +22,8 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "Karine Duarte | Desenvolvedora Back-End",
-  description: "Portfólio de Karine Duarte, Desenvolvedora Back-End e Analista de Dados.",
+  title: "Karine Duarte | Developer",
+  description: "Portfólio de Karine Duarte, Desenvolvedora Fullstack e Analista de Dados.",
   icons: {
     icon: '/Logo1.ico',
   },

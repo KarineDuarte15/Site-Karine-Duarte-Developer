@@ -7,19 +7,28 @@ import Link from 'next/link';
 
 const blogPosts = [
   {
+    title: '🚀 Git além do clone: Comandos úteis que todo dev deveria saber',
+    description: 'Domine o versionamento de código, aprenda a salvar sua pele com o git stash e reflog, e melhore seu fluxo de trabalho.',
+    link: '/blog/git-alem-do-clone', // Link interno
+    date: '15 de Setembro, 2025',
+    image: '/gitalendoclone.png' 
+  },
+  {
     title: 'Desvendando o Supabase: Alternativa Open Source ao Firebase',
     description: 'Neste post, vamos explorar as principais características do Supabase, como seu banco de dados Postgres, autenticação e APIs automáticas.',
     link: '/blog/desvendando-o-supabase', // Link interno
-    date: '15 de Outubro, 2025',
+    date: '01 de Outubro, 2025',
     image: '/blog2.png' 
   },
   {
     title: '5 Dicas de Performance em Aplicações Next.js',
     description: 'Aprenda como otimizar sua aplicação Next.js para um carregamento mais rápido e uma melhor experiência do usuário, abordando desde imagens até server components.',
     link: '/blog/5-dicas-nextjs', // Link interno
-    date: '01 de Outubro, 2025',
+    date: '15 de Outubro, 2025',
     image: '/react-next1.png' 
   },
+  
+
 ];
 
 export default function Blog() {
@@ -40,11 +49,10 @@ export default function Blog() {
         </motion.h2>
         
         {/* Layout em Grid similar ao de Projetos */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {blogPosts.map((post, index) => (
             <motion.div
               key={index}
-              // Os cards continuam brancos (bg-white)
               className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col border border-transparent hover:border-yellow-500 transition-all duration-300"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}

@@ -16,7 +16,7 @@ const journeyData = [
     year: '2025',
     title: 'Formação em Desenvolvimento Back-end',
     company: 'Oracle Next Education',
-    description: 'Curso intensivo focado em desenvolvimento back-end, incluindo Java, Express, bancos de dados oracle e NoSQL, e práticas de DevOps.',
+    description: 'Focado em desenvolvimento back-end, incluindo Java, Spring Boot, bancos de dados oracle, e práticas de DevOps.',
   },
   {
     icon: <FaGraduationCap />,
@@ -66,7 +66,7 @@ const journeyData = [
     year: '2025',
     title: 'Formação em Desenvolvimento Back-end',
     company: 'Oracle Next Education',
-    description: 'Curso intensivo focado em desenvolvimento back-end, incluindo Java, Express, bancos de dados oracle e NoSQL, e práticas de DevOps.',
+    description: 'Focado em desenvolvimento back-end, incluindo Java, Spring Boot, bancos de dados oracle, e práticas de DevOps.',
   },
   {
     icon: <FaGraduationCap />,
@@ -125,7 +125,7 @@ export default function Journey() {
           <div className="absolute top-1/2 left-0 h-0.5 w-full bg-[#F4C542] -translate-y-1/2 z-0"></div>
           
           {journeyData.map((item, index) => (
-            <div key={index} className="relative flex-shrink-0 w-[500px] h-[600px] flex items-center justify-center mx-4">
+            <div key={index} className="relative flex-shrink-0 w-[600px] h-[700px] flex items-center justify-center mx-4">
               
               {/* Ícone central na linha */}
               <div className="absolute top-1/2 -translate-y-1/2 z-20 left-1/2 -translate-x-1/2">
