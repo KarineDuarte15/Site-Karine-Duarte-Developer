@@ -11,14 +11,14 @@ const blogPosts = [
     description: 'Neste post, vamos explorar as principais características do Supabase, como seu banco de dados Postgres, autenticação e APIs automáticas.',
     link: '/blog/desvendando-o-supabase', // Link interno
     date: '15 de Outubro, 2025',
-    image: '/profile19.jpeg' 
+    image: '/blog2.png' 
   },
   {
     title: '5 Dicas de Performance em Aplicações Next.js',
     description: 'Aprenda como otimizar sua aplicação Next.js para um carregamento mais rápido e uma melhor experiência do usuário, abordando desde imagens até server components.',
     link: '/blog/5-dicas-nextjs', // Link interno
     date: '01 de Outubro, 2025',
-    image: '/profile18.jpeg' 
+    image: '/react-next1.png' 
   },
 ];
 
@@ -59,7 +59,6 @@ export default function Blog() {
                     src={post.image}
                     alt={post.title}
                     fill
-                    className="object-cover"
                   />
                 </div>
                 
