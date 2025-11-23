@@ -4,6 +4,7 @@ import { FaGithub, FaLinkedin, FaArrowUp } from 'react-icons/fa';
 import ParticlesBackground from './ParticlesBackground';
 import RevealOnScroll from './RevealOnScroll';
 
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
