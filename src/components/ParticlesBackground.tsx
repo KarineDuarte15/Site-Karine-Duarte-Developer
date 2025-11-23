@@ -18,7 +18,7 @@ export default function ParticlesBackground({ children, id, className = "" }: Pa
   const [currentTheme, setCurrentTheme] = useState('dark');
 
   useEffect(() => {
-    initParticlesEngine(async (engine) => {
+    initParticlesEngine(async (engine: any) => {
       await loadSlim(engine);
     }).then(() => {
       setInit(true);
