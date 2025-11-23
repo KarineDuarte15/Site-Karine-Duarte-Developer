@@ -1,25 +1,23 @@
 // src/app/layout.tsx
 import type { Metadata } from "next";
-// Importa as fontes do Google
 import { Montserrat, Roboto } from "next/font/google";
 import "./globals.css";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ContactModal from "@/components/ContactModal";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import ThemeProvider from "@/components/ThemeProvider";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 
-// Configura a fonte para os textos corridos (corpo)
 const roboto = Roboto({
   subsets: ["latin"],
-  weight: ['400', '700'], // Pesos que vamos usar
-  variable: '--font-roboto', // Nome da variável CSS
+  weight: ['400', '700'], 
+  variable: '--font-roboto', 
 });
 
-// Configura a fonte para os títulos
 const montserrat = Montserrat({
   subsets: ["latin"],
-  weight: ['700', '800'], // Pesos que vamos usar
-  variable: '--font-montserrat', // Nome da variável CSS
+  weight: ['700', '800'], 
+  variable: '--font-montserrat', 
 });
 
 export const metadata: Metadata = {
@@ -32,13 +30,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="pt-BR" className="scroll-smooth">
-      <body className={`${roboto.variable} ${montserrat.variable} bg-background text-foreground`}>
-        {children}
-        <ContactModal />
-        <WhatsAppButton />
-        <SpeedInsights />
-        <ThemeProvider></ThemeProvider>
+    // ADICIONEI: suppressHydrationWarning aqui na tag html
+    <html lang="pt-BR" className="scroll-smooth" suppressHydrationWarning>
+      <body className={`${roboto.variable} ${montserrat.variable} bg-background text-foreground transition-colors duration-300`}>
+        <ThemeProvider>
+          <LanguageProvider>
+            {children}
+            <ContactModal />
+            <WhatsAppButton />
+            <SpeedInsights />
+          </LanguageProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

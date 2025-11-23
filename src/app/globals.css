@@ -2,15 +2,25 @@
 
 @import "tailwindcss";
 
-/* Removido @theme inválido; use apenas variáveis CSS em :root */
-/* Definimos as variáveis de cor para o tema claro */
 :root {
---background: #0D1B2A; /* Azul Marinho */
---foreground: #E5E5E5; /* Branco */
---card-background: #1B263B; /* Azul Médio */
---primary-accent: #F4C542; /* Amarelo Dourado */
---secondary-accent: #E5E5E5; /* Cinza Claro */
---text-muted: #E5E5E5; /* Cinza Claro */
+  --background: #FFFFFF;       /* Fundo Branco Puro */
+  --foreground: #0D1B2A;       /* Texto Azul Escuro */
+  --card-background: #F3F4F6;  /* Cinza bem claro para cards */
+  --primary-accent: #F4C542;
+  --secondary-accent: #0D1B2A;
+  --text-muted: #0d1625;       /* Cinza médio para textos secundários */
+  --border-color: #E5E7EB;     /* Borda suave */
+}
+
+/* 2. Definimos o TEMA ESCURO (Ativado pela classe .dark) */
+.dark {
+  --background: #0D1B2A;       /* Azul Marinho */
+  --foreground: #E5E5E5;       /* Branco/Cinza Claro */
+  --card-background: #1B263B;  /* Azul Médio */
+  --primary-accent: #F4C542;
+  --secondary-accent: #E5E5E5;
+  --text-muted: #9CA3AF;       /* Cinza claro para textos secundários */
+  --border-color: #06111f;
 }
 
 
@@ -31,6 +41,7 @@ body {
   border-color: var(--border);
 
   color-scheme: light dark;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
 }
 
 /* Estilos globais adicionais */
