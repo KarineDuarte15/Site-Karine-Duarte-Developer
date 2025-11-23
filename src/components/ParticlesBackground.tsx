@@ -4,7 +4,8 @@
 import { useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import { useTheme } from "next-themes"; // Importamos o hook de tema
+import { useTheme } from "next-themes";
+import type { Engine } from "@tsparticles/engine";
 
 interface ParticlesBackgroundProps {
   children: React.ReactNode;
@@ -14,29 +15,28 @@ interface ParticlesBackgroundProps {
 
 export default function ParticlesBackground({ children, id, className = "" }: ParticlesBackgroundProps) {
   const [init, setInit] = useState(false);
-  const { resolvedTheme } = useTheme(); // Pegamos o tema atual
-  const [currentTheme, setCurrentTheme] = useState('dark');
+  const { resolvedTheme } = useTheme();
+  const [currentTheme, setCurrentTheme] = useState<string>('dark'); // Tipagem explícita
 
   useEffect(() => {
-    initParticlesEngine(async (engine: any) => {
+    // Agora usamos o tipo 'Engine' em vez de 'any', o que resolve o erro da linha 21
+    initParticlesEngine(async (engine: Engine) => {
       await loadSlim(engine);
     }).then(() => {
       setInit(true);
     });
   }, []);
 
-  // Atualiza o estado interno quando o tema muda
   useEffect(() => {
     if (resolvedTheme) {
       setCurrentTheme(resolvedTheme);
     }
   }, [resolvedTheme]);
 
-  // Definição de cores baseada no tema
   const isDark = currentTheme === 'dark';
-  const particleColor = isDark ? "#F4C542" : "#0D1B2A"; // Ouro no Dark, Azul no Light
-  const linksColor = isDark ? "#F4C542" : "#0D1B2A";
-  // Fundo: Transparente pois a cor vem da div pai (bg-background)
+  // Garantimos que são strings para evitar inferência de 'any'
+  const particleColor: string = isDark ? "#F4C542" : "#0D1B2A";
+  const linksColor: string = isDark ? "#F4C542" : "#0D1B2A";
   
   return (
     // Usamos bg-background para pegar a cor da variável global
