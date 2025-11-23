@@ -6,6 +6,7 @@ import "./globals.css";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import ContactModal from "@/components/ContactModal";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import ThemeProvider from "@/components/ThemeProvider";
 
 // Configura a fonte para os textos corridos (corpo)
 const roboto = Roboto({
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ContactModal />
         <WhatsAppButton />
         <SpeedInsights />
+        <ThemeProvider></ThemeProvider>
       </body>
     </html>
   );

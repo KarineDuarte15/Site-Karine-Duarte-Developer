@@ -3,6 +3,8 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import ParticlesBackground from './ParticlesBackground';
+import RevealOnScroll from './RevealOnScroll';
 
 // Lista de imagens (seu array existente)
 const eventImages = [
@@ -33,34 +35,37 @@ const allImages = [...eventImages, ...eventImages];
 
 export default function EventsGallery() {
   return (
-    <section id="events" className="py-10 bg-[color:var(--background)]">
-      <div className="container mx-auto">
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          
-          className="text-4xl font-bold text-center mb-16 font-heading text-foreground"
-        >
-          Momentos da Carreira
-        </motion.h2>
+    <section id="events">
+      <ParticlesBackground id="particles-events">
+        <div className="py-20">
+          <div className="container mx-auto">
+            
+            <RevealOnScroll>
+              <h2 className="text-4xl font-bold text-center mb-16 font-heading text-[#F4C542]">
+                Momentos da Carreira
+              </h2>
+            </RevealOnScroll>
 
-        <div className="group w-full overflow-hidden">
-          <div className="inline-flex animate-marquee group-hover:[animation-play-state:paused]">
-            {allImages.map((image, index) => (
-              <div key={index} className="relative w-72 h-80 mx-4 flex-shrink-0">
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  fill 
-                  className="rounded-lg shadow-lg object-cover"
-                />
+            <RevealOnScroll delay={0.2}>
+              <div className="group w-full overflow-hidden">
+                <div className="inline-flex animate-marquee group-hover:[animation-play-state:paused]">
+                  {allImages.map((image, index) => (
+                    <div key={index} className="relative w-72 h-80 mx-4 flex-shrink-0 border-2 border-[#F4C542]/20 rounded-lg overflow-hidden">
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        fill 
+                        className="object-cover transition-transform duration-500 hover:scale-110"
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
+            </RevealOnScroll>
+
           </div>
         </div>
-      </div>
+      </ParticlesBackground>
     </section>
   );
 }

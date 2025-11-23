@@ -1,6 +1,7 @@
 // src/components/Journey.tsx
 'use client';
-
+import ParticlesBackground from './ParticlesBackground'; // Importar
+import RevealOnScroll from './RevealOnScroll'; // Importar
 import { FaBriefcase, FaGraduationCap } from 'react-icons/fa';
 
 const journeyData = [
@@ -107,57 +108,64 @@ const journeyData = [
 
 export default function Journey() {
   return (
-    // Removemos padding horizontal da section para permitir full-width
-    <section id="journey" className="py-20 bg-light-background overflow-hidden">
-      
-      {/* Container APENAS para o título, para mantê-lo centralizado e alinhado */}
-      <div className="container mx-auto px-20">
-        <h2 className="text-4xl font-bold text-center mb-16 font-heading text-header-text">
-          Minha Jornada
-        </h2>
-      </div>
-
-      {/* A div da animação agora está FORA do container, ocupando w-full (100% da tela) */}
-      <div className="group relative w-full overflow-hidden">
-        <div className="relative inline-flex animate-marquee">
+    <section id="journey">
+      <ParticlesBackground id="particles-journey">
+        <div className="py-20 overflow-hidden">
           
-          {/* Linha do tempo */}
-          <div className="absolute top-1/2 left-0 h-0.5 w-full bg-[#F4C542] -translate-y-1/2 z-0"></div>
-          
-          {journeyData.map((item, index) => (
-            <div key={index} className="relative flex-shrink-0 w-[600px] h-[700px] flex items-center justify-center mx-4">
-              
-              {/* Ícone central na linha */}
-              <div className="absolute top-1/2 -translate-y-1/2 z-20 left-1/2 -translate-x-1/2">
-                <div className="flex items-center justify-center w-12 h-12 bg-header-text rounded-full border-4 border-[#F4C542] bg-[#0D1B2A]">
-                  <div className="text-accent text-xl">{item.icon}</div>
-                </div>
+          {/* Título com Animação */}
+          <div className="container mx-auto px-20">
+            <RevealOnScroll>
+              <h2 className="text-4xl font-bold text-center mb-16 font-heading text-[#F4C542]">
+                Minha Jornada
+              </h2>
+            </RevealOnScroll>
+          </div>
+
+          {/* Animação da Linha do Tempo */}
+          <RevealOnScroll delay={0.2}>
+            <div className="group relative w-full overflow-hidden">
+              <div className="relative inline-flex animate-marquee">
+                
+                {/* Linha do tempo */}
+                <div className="absolute top-1/2 left-0 h-0.5 w-full bg-[#F4C542] -translate-y-1/2 z-0"></div>
+                
+                {journeyData.map((item, index) => (
+                  <div key={index} className="relative flex-shrink-0 w-[600px] h-[700px] flex items-center justify-center mx-4">
+                    
+                    {/* Ícone central */}
+                    <div className="absolute top-1/2 -translate-y-1/2 z-20 left-1/2 -translate-x-1/2">
+                      <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-[#F4C542] bg-[#0D1B2A] text-white">
+                        <div className="text-[#F4C542] text-xl">{item.icon}</div>
+                      </div>
+                    </div>
+
+                    {/* Card de Conteúdo */}
+                    <div 
+                      className={`absolute left-1/2 -translate-x-1/2 w-80 p-6 rounded-lg shadow-xl border border-[#F4C542]/30 z-10 hover:scale-105 transition-transform duration-300 bg-[#1B263B]
+                      ${index % 2 === 0 ? 'bottom-[60%] mb-4' : 'top-[60%] mt-4'}`}
+                    >
+                      {/* Seta indicativa */}
+                      <div 
+                        className={`absolute left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent
+                        ${index % 2 === 0 
+                          ? 'bottom-[-10px] border-t-[10px] border-t-[#1B263B]' 
+                          : 'top-[-10px] border-b-[10px] border-b-[#1B263B]'
+                        }`}
+                      ></div>
+
+                      <time className="text-xs font-bold text-[#F4C542] uppercase tracking-wider">{item.year}</time>
+                      <div className="text-xs text-gray-400 mb-2">{item.company}</div>
+                      <h3 className="text-lg font-bold mb-2 font-heading text-white leading-tight">{item.title}</h3>
+                      <p className="text-sm text-gray-300 leading-relaxed">{item.description}</p>
+                    </div>
+
+                  </div>
+                ))}
               </div>
-
-              {/* Card de Conteúdo - Alternando Cima/Baixo */}
-              <div 
-                className={`absolute left-1/2 -translate-x-1/2 w-80 bg-header-bg p-6 rounded-lg shadow-xl border border-accent/30 z-10 hover:scale-105 transition-transform duration-300 bg-[#1B263B]
-                ${index % 2 === 0 ? 'bottom-[60%] mb-4' : 'top-[60%] mt-4'}`}
-              >
-                {/* Seta indicativa */}
-                <div 
-                  className={`absolute left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent
-                  ${index % 2 === 0 
-                    ? 'bottom-[-10px] border-t-[10px] border-t-[#1B263B]' 
-                    : 'top-[-10px] border-b-[10px] border-b-[#1B263B]'
-                  }`}
-                ></div>
-
-                <time className="text-xs font-bold text-[#F4C542] uppercase tracking-wider">{item.year}</time>
-                <div className="text-xs text-gray-400 mb-2">{item.company}</div>
-                <h3 className="text-lg font-bold mb-2 font-heading text-white leading-tight">{item.title}</h3>
-                <p className="text-sm text-gray-300 leading-relaxed">{item.description}</p>
-              </div>
-
             </div>
-          ))}
+          </RevealOnScroll>
         </div>
-      </div>
+      </ParticlesBackground>
     </section>
   );
 }

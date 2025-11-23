@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { FaGithub, FaLinkedin, FaBars, FaTimes } from 'react-icons/fa';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import ThemeToggle from './ThemeToggle';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -45,9 +46,11 @@ export default function Header() {
           <a href="https://www.linkedin.com/in/karine-duarte-759ba02bb/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <FaLinkedin className="font-bold cursor-pointer w-6 h-6 text-[#0D1B2A] hover:text-yellow-500 scale-105 hover:-translate-y-1 hover:shadow-xl transition-all" />
           </a>
+          <ThemeToggle />
         </div>
 
         <div className="md:hidden flex items-center">
+          <ThemeToggle />
           <button onClick={toggleMenu} className="text-[#0D1B2A] focus:outline-none p-2">
             {isMenuOpen ? <FaTimes size={28} /> : <FaBars size={28} />}
           </button>

@@ -4,6 +4,8 @@
 import { motion } from 'framer-motion';
 import { FaGithub } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
+import ParticlesBackground from './ParticlesBackground';
+import RevealOnScroll from './RevealOnScroll';
 
 const projectsData = [
   {
@@ -53,59 +55,56 @@ const projectsData = [
 
 export default function Projects() {
   return (
-    // Definimos um fundo escuro para a seção inteira
-    <section id="projects" className="py-24 bg-[#E5E5E5]">
-      
-      <div className="container bg-[#E5E5E5] mx-auto px-6 py-16 rounded-lg">
-        {/* 2. CORREÇÃO DO TÍTULO:
-          Colocamos o texto "Meus Projetos" de volta e ajustamos a cor para escuro.
-        */}
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="text-4xl font-bold text-center mb-12 font-heading text-[#0D1B2A]"
-        >
-          Meus Projetos
-        </motion.h2>
+    <section id="projects">
+      <ParticlesBackground id="particles-projects">
+        <div className="container mx-auto px-6 py-24">
+          
+          <RevealOnScroll>
+            <h2 className="text-4xl font-bold text-center mb-12 font-heading text-[#F4C542]">
+              Meus Projetos
+            </h2>
+          </RevealOnScroll>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projectsData.map((project, index) => (
-            <motion.div
-              key={index}
-              className="bg-[color:var(--background)] rounded-lg shadow-lg overflow-hidden flex flex-col border border-transparent hover:border-yellow-500 transition-all duration-300"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -8 }}
-            >
-              <div className="p-6 flex-grow flex flex-col">
-                <div className="flex justify-end items-center space-x-4 mb-4">
-                  <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-background hover:text-yellow-500 transition-colors" aria-label="GitHub repository">
-                    <FaGithub size={22} />
-                  </a>
-                  {project.demoUrl && (
-                    <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="text-background/70 hover:text-yellow-500 transition-colors" aria-label="Live demo">
-                      <FiExternalLink size={22} />
-                    </a>
-                  )}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projectsData.map((project, index) => (
+              <RevealOnScroll key={index} delay={index * 0.1}>
+                <div className="bg-[#1B263B] rounded-lg shadow-lg overflow-hidden flex flex-col border border-transparent hover:border-[#F4C542] transition-all duration-300 h-full group hover:-translate-y-2">
+                  <div className="p-6 flex-grow flex flex-col">
+                    
+                    <div className="flex justify-end items-center space-x-4 mb-4">
+                      <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#F4C542] transition-colors">
+                        <FaGithub size={22} />
+                      </a>
+                      {project.demoUrl && (
+                        <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" className="text-white hover:text-[#F4C542] transition-colors">
+                          <FiExternalLink size={22} />
+                        </a>
+                      )}
+                    </div>
+
+                    <h3 className="text-2xl text-white font-bold mb-3 font-heading group-hover:text-[#F4C542] transition-colors">
+                      {project.title}
+                    </h3>
+                    
+                    <p className="text-gray-300 mb-4 flex-grow">
+                      {project.description}
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-white/10">
+                      {project.technologies.map((tech) => (
+                        <span key={tech} className="bg-[#0D1B2A] text-[#F4C542] text-xs font-semibold px-3 py-1 rounded-full border border-[#F4C542]/20">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                  </div>
                 </div>
-                <h3 className="text-2xl text-background font-bold mb-3 font-heading">{project.title}</h3>
-                <p className="text-background/80 mb-4 flex-grow">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-background/20">
-                  {project.technologies.map((tech) => (
-                    <span key={tech} className="bg-card text-accent text-xs font-semibold px-3 py-1 rounded-full">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              </RevealOnScroll>
+            ))}
+          </div>
         </div>
-      </div>
+      </ParticlesBackground>
     </section>
   );
 }

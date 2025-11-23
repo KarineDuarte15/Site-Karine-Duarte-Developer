@@ -2,6 +2,7 @@
 'use client';
 
 import Image from 'next/image';
+import RevealOnScroll from './RevealOnScroll';
 import { motion } from 'framer-motion';
 import { FaDownload, FaTable, FaProjectDiagram, FaTasks, FaCog, FaJava, FaChartBar } from 'react-icons/fa';
 import {
@@ -28,6 +29,7 @@ import {
   SiSupabase,
   SiTableau
 } from 'react-icons/si';
+import ParticlesBackground from './ParticlesBackground';
 
 const skills = [
     "Python", "FastAPI", "Django", "JavaScript", "React", "Java", "Spring Boot", "Node.js", "Express.js", "TypeScript", "Next.js", "HTML", "CSS", "TailwindCSS", "Git", "GitHub", "SQL", "NoSQL", "Oracle", "PostgreSQL", "MySQL", "Docker", "Supabase", "Pandas", "Power BI", "Tableau", "Agile Methodologies", "Scrum", "ETL"
@@ -67,68 +69,66 @@ const skillIcons: Record<string, React.ElementType> = {
 
 export default function About() {
   return (
-    
-    <section id="about" className="py-0 text-center bg-[#E5E5E5]">
-      <div className="container mx-auto px-6 gap-3  p-12 ">
-       <div className="font-extralight grid md:grid-cols-5 gap-25 text-left bg-[#E5E5E5] items-center">
-          {/* Coluna do Texto */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="md:col-span-3"
-          >
-            <h2 className="text-4xl font-bold text-center text-blue-950 mb-4">Sobre Mim</h2>
-            <p className="text-muted text-blue-950 mb-6 text-lg">
-                Minha jornada na tecnologia começou com a curiosidade, mas se transformou em uma carreira focada em criar soluções. Com formação em Análise e Desenvolvimento de Sistemas, hoje eu conecto o poder do back-end com a inteligência da análise de dados para gerar impacto real.
-            </p>
-            <p className="text-muted text-blue-950 mb-8 text-lg">
-              Atuo como Desenvolvedora Full-Stack e Analista de Dados, utilizando um arsenal de tecnologias para construir sistemas eficientes, automatizar processos e transformar dados brutos em insights valiosos que impulsionam decisões.
-            </p>
-            <h3 className="text-2xl bg-[#E5E5E5] text-blue-950 font-semibold mb-4 text-left">Habilidades Técnicas</h3>
-            <div className="flex flex-wrap gap-3 mb-8">
-              {skills.map((skill) => {
-                
-                const IconComponent = skillIcons[skill] || FaCog; 
-                
-                return (
-                  <span key={skill} className="bg-yellow-500 text-blue-950 text-sm font-semibold px-4 py-2 rounded-full shadow-md flex items-center gap-2 hover:scale-105 transition-transform cursor-default">
-                    {/* Renderiza o ícone */}
-                    <IconComponent className="text-lg" /> 
-                    {skill}
-                  </span>
-                );
-              })}
+    <section id="about">
+      {/* Usamos min-h-screen aqui para garantir que a seção ocupe espaço suficiente */}
+      <ParticlesBackground id="particles-about" className="min-h-screen">
+        <div className="container mx-auto px-6 py-24">
+          <div className="grid md:grid-cols-5 gap-12 items-center">
+            
+            {/* Coluna do Texto */}
+            <div className="md:col-span-3 text-left">
+              <RevealOnScroll>
+                <h2 className="text-4xl font-bold text-[#F4C542] mb-4">Sobre Mim</h2>
+                <p className="text-gray-300 mb-6 text-lg font-light">
+                    Minha jornada na tecnologia começou com a curiosidade, mas se transformou em uma carreira focada em criar soluções. Com formação em Análise e Desenvolvimento de Sistemas, hoje eu conecto o poder do back-end com a inteligência da análise de dados para gerar impacto real.
+                </p>
+                <p className="text-gray-300 mb-8 text-lg font-light">
+                  Atuo como Desenvolvedora Full-Stack e Analista de Dados, utilizando um arsenal de tecnologias para construir sistemas eficientes, automatizar processos e transformar dados brutos em insights valiosos que impulsionam decisões.
+                </p>
+              </RevealOnScroll>
+
+              <RevealOnScroll delay={0.2}>
+                <h3 className="text-2xl text-accent font-semibold mb-6 text-left">Habilidades Técnicas</h3>
+                <div className="flex flex-wrap gap-3 mb-8">
+                  {skills.map((skill) => {
+                    const IconComponent = skillIcons[skill] || FaCog; 
+                    return (
+                      <span key={skill} className="bg-[#1B263B] text-[#F4C542] border border-[#F4C542]/30 text-sm font-semibold px-4 py-2 rounded-full shadow-md flex items-center gap-2 hover:scale-105 transition-transform cursor-default hover:bg-[#F4C542] hover:text-[#0D1B2A]">
+                        <IconComponent className="text-lg" /> 
+                        {skill}
+                      </span>
+                    );
+                  })}
+                </div>
+
+                <a
+                  href="/Erika Karine Duarte 2025.2 currículo lattes.pdf"
+                  download
+                  className="inline-flex items-center gap-3 bg-[#F4C542] text-[#0D1B2A] font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-white transition-transform duration-300 hover:scale-105"
+                >
+                  <FaDownload />
+                  Download CV
+                </a> 
+              </RevealOnScroll>
             </div>
 
-            <a
-              href="/Erika Karine Duarte 2025.2 currículo lattes.pdf"
-              download
-              className="bg-[#E5E5E5] inline-flex items-center gap-3 bg-blue-950 text-navy font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-yellow-500 transition-transform duration-300 hover:scale-105"
-            >
-              <FaDownload />
-              Download CV
-            </a> 
-          </motion.div>
-                    {/* Coluna da Imagem */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-            className="flex justify-center md:col-span-2"
-          >
-            <Image
-              src="/profile11.png" 
-              alt="Erika Karine Duarte"
-              width={800} 
-              height={800}
-              
-            />
-          </motion.div>
+            {/* Coluna da Imagem */}
+            <div className="flex justify-center md:col-span-2">
+               <RevealOnScroll delay={0.4}>
+                  <div className="relative w-[300px] h-[300px] md:w-[450px] md:h-[450px] rounded-2xl overflow-hidden">
+                    <Image
+                      src="/profile11.png" 
+                      alt="Erika Karine Duarte"
+                      fill
+                      className="object-cover transition-transform duration-500"
+                    />
+                  </div>
+               </RevealOnScroll>
+            </div>
+
+          </div>
         </div>
-      </div>
+      </ParticlesBackground>
     </section>
   );
 }
