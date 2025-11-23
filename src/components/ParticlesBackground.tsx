@@ -5,7 +5,7 @@ import { useEffect, useState, useMemo } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
 import { useTheme } from "next-themes";
-import { type ISourceOptions, type Engine } from "@tsparticles/engine";
+import { Engine, ISourceOptions } from "@tsparticles/engine";
 
 interface ParticlesBackgroundProps {
   children: React.ReactNode;
@@ -115,7 +115,12 @@ export default function ParticlesBackground({ children, id, className = "" }: Pa
                 speed: 1.5,
               },
               number: {
-                density: { enable: true, area: 800 } as any,
+               density: {
+                enable: true,
+                width: 800,
+                height: 800,
+               },
+                value: 60,
               },
               opacity: { value: 0.5 },
               shape: { type: "circle" },
