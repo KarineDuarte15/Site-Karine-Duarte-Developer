@@ -1,7 +1,7 @@
 // src/components/Projects.tsx
 'use client';
 
-import { motion } from 'framer-motion';
+
 import { FaGithub } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
 import ParticlesBackground from './ParticlesBackground';

@@ -3,7 +3,7 @@
 
 import Image from 'next/image';
 import RevealOnScroll from './RevealOnScroll';
-import { motion } from 'framer-motion';
+
 import { FaDownload, FaTable, FaProjectDiagram, FaTasks, FaCog, FaJava, FaChartBar } from 'react-icons/fa';
 import {
   SiPython,

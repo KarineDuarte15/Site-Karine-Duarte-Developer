@@ -2,7 +2,7 @@
 'use client';
 
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+
 import ParticlesBackground from './ParticlesBackground';
 import RevealOnScroll from './RevealOnScroll';
 

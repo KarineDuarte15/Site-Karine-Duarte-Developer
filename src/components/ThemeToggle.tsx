@@ -6,15 +6,15 @@ import { useEffect, useState } from 'react';
 import { FaSun, FaMoon } from 'react-icons/fa';
 
 export default function ThemeToggle() {
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  // Removido 'theme' da lista abaixo pois não estava sendo usado
+  const { setTheme, resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
-  // Evita erro de hidratação (renderizar diferente no server/client)
   useEffect(() => {
     setMounted(true);
   }, []);
 
-  if (!mounted) return null; // Não renderiza nada até carregar no cliente
+  if (!mounted) return null;
 
   const isDark = resolvedTheme === 'dark';
 
