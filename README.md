@@ -120,10 +120,6 @@ Projetos liderados:
 
 <h1 align="center">🌟 Portfolio — Karine Duarte 🌟</h1>
 
-<p align="center">
-<img src="public/mockup-light.png" width="80%" alt="Portfolio Mockup"/>
-</p>
-
 ---
 
 ## ✨ About Me
