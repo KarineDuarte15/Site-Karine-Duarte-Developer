@@ -1,138 +1,195 @@
-# Portfólio Karine Duarte - Desenvolvedora Full-Stack e Analista de Dados
+<h1 align="center">🌟 Portfólio — Karine Duarte 🌟</h1>
 
-<img src="public/Logo1.png" alt="Logo Karine Duarte Developer" width="150"/>
+<p align="center">
+  <picture>
+    <source srcset="public/mockup-dark.png" media="(prefers-color-scheme: dark)">
+    <img src="public/mockup-light.png" width="80%" alt="3D Mockup do Portfólio"/>
+  </picture>
+</p>
 
-Este é o repositório do meu portfólio pessoal, desenvolvido para apresentar as minhas competências, experiência e projetos na área de desenvolvimento Full-Stack e análise de dados.
-
-**Visite o site:**  
-👉 https://site-karine-duarte-developer.vercel.app/
-
----
-
-## ✨ Funcionalidades Principais
-
-- **Secção Hero:** Apresentação dinâmica com animação de digitação.  
-- **Sobre Mim:** Descrição detalhada das minhas competências e experiência, com opção de download do CV.  
-- **Minha Jornada:** Timeline interativa apresentando a minha trajetória académica e profissional.  
-- **Projetos:** Galeria de projetos com descrição, tecnologias utilizadas e links para GitHub e demonstrações.  
-- **Momentos da Carreira:** Galeria de imagens com efeito de scroll infinito.  
-- **Blog:** Secção para partilhar artigos e conhecimentos.  
-- **Formulário de Contacto:** Envio de mensagens integrado com o Supabase.  
-- **Modal de Contacto:** Pop-up para captação de leads (Supabase).  
-- **Botão WhatsApp:** Acesso rápido para contacto direto.  
-- **Design Responsivo:** Totalmente adaptado para mobile e desktop.  
-- **Performance:** Monitorização via Vercel Speed Insights.
+<p align="center"><b>Full-Stack Developer • Data Analyst • Tech Lead</b></p>
 
 ---
 
-## 🚀 Tecnologias Utilizadas
-
-Este projeto utiliza as versões mais recentes e seguras do ecossistema React:
-
-- **Framework:** [Next.js 15+](https://nextjs.org/) (App Router & Turbopack)  
-- **Linguagem:** [TypeScript](https://www.typescriptlang.org/)  
-- **Biblioteca UI:** React 19  
-- **Estilização:** [Tailwind CSS](https://tailwindcss.com/)  
-- **Animações:** [Framer Motion](https://www.framer.com/motion/)  
-- **Backend (Database):** [Supabase](https://supabase.io/) (PostgreSQL)  
-- **Ícones:** [React Icons](https://react-icons.github.io/react-icons/)  
-- **Qualidade de Código:** [ESLint](https://eslint.org/)
+<p align="center">
+  🔗 <a href="https://site-karine-duarte-developer.vercel.app/" target="_blank"><b>Acessar Portfólio</b></a>
+</p>
 
 ---
 
-## 💻 Como Rodar o Projeto Localmente
+<!-- BADGES ANIMADOS -->
+<p align="center">
+  <img src="https://img.shields.io/github/stars/KarineDuarte15/Site-Karine-Duarte-Developer?color=yellow&style=for-the-badge&logo=starship&logoColor=white">
+  <img src="https://img.shields.io/github/last-commit/KarineDuarte15/Site-Karine-Duarte-Developer?style=for-the-badge&color=blue&logo=github">
+  <img src="https://komarev.com/ghpvc/?username=KarineDuarte15&color=ff69b4&style=for-the-badge">
+</p>
 
-### 1. Clone o repositório
+<p align="center">
+  <img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=22&pause=1000&color=F793FF&center=true&vCenter=true&width=600&lines=Bem-vindo(a)+ao+meu+portfólio!;Desenvolvedora+Full+Stack;Analista+de+Dados;Tech+Lead+em+projetos+de+TI;Criando+produtos+digitais+de+alto+impacto">
+</p>
+
+---
+
+<p align="center">
+  <a href="#english-version">🇺🇸 Read in English</a>
+</p>
+
+---
+
+# 🎬 GIF da Interface
+
+<p align="center">
+  <picture>
+    <source srcset="public/portfolio-dark.gif" media="(prefers-color-scheme: dark)">
+    <img src="public/portfolio-light.gif" width="85%" alt="GIF da interface do site"/>
+  </picture>
+</p>
+
+---
+
+# ✨ Funcionalidades Principais
+
+- Hero animado com efeito de digitação  
+- Sobre Mim + Download de CV  
+- Timeline interativa da carreira  
+- Galeria de projetos com GitHub & Live Demo  
+- Blog integrado  
+- Modal + Formulário via Supabase  
+- Design responsivo  
+- Performance via Vercel Insights  
+
+---
+
+# 🧠 Minha Experiência como **Tech Lead**
+
+Como Tech Lead, minha atuação envolve:
+
+- Definição arquitetural e padrões de código  
+- Mentoria técnica e organização do time  
+- Revisão de PRs e code quality  
+- Tomada de decisões técnicas estratégicas  
+- Integração com times de produto  
+- Gestão de sprints com foco em previsibilidade  
+- Condução de cerimônias ágeis (Scrum/Kanban)  
+
+Projetos liderados incluem:
+
+- Sistemas web full-stack  
+- Dashboards de análise de dados  
+- Aplicações com IA generativa  
+- Integrações complexas com APIs  
+- Automação e pipelines  
+
+---
+
+# 🎨 Tema Claro/Escuro (Auto)
+
+<p align="center">
+  <picture>
+    <source srcset="public/theme-dark.png" media="(prefers-color-scheme: dark)">
+    <img src="public/theme-light.png" width="80%" alt="Tema Light e Dark"/>
+  </picture>
+</p>
+
+---
+
+# 🛠 Tecnologias que Domino (SVG Icons)
+
+<p align="center">
+  <img height="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"/>
+  <img height="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"/>
+  <img height="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"/>
+  <img height="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"/>
+  <img height="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"/>
+  <img height="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg"/>
+  <img height="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"/>
+  <img height="60" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"/>
+</p>
+
+---
+
+# 🧭 Roadmap do Projeto
+
+- [x] Estrutura base do portfólio  
+- [x] Sessão "Momentos da Carreira" com galeria  
+- [x] Contact Modal com Supabase  
+- [x] Blog com layout profissional  
+- [x]  Dark mode customizado  
+- [ ] Nova sessão: "Clientes & Depoimentos"  
+- [x] Dashboard interno com analytics  
+- [ ] API para posts externos (Hashnode/Dev.to)  
+- [ ] Chatbot IA integrado ao portfólio  
+
+---
+
+# 📸 Tabela de Projetos
+
+| Projeto | Preview | Tecnologias | Links |
+|--------|---------|--------------|--------|
+| **Portfolio Pro** | <img src="public/projeto1.png" width="240"/> | Next.js, Tailwind, Supabase | [GitHub](#) · [Live](#) |
+| **Dashboard Financeiro** | <img src="public/projeto2.png" width="240"/> | React, Node, PostgreSQL | [GitHub](#) · [Live](#) |
+| **Sistema de Estudos IA** | <img src="public/projeto3.png" width="240"/> | Next.js, Gemini API, Firebase | [GitHub](#) · [Live](#) |
+
+---
+
+# 🐍 Gráfico Snake das minhas Contribuições
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/KarineDuarte15/KarineDuarte15/output/github-contribution-grid-snake.svg" alt="Snake Animation"/>
+</p>
+
+---
+
+# 💻 Como Rodar Localmente
 
 ```bash
 git clone https://github.com/KarineDuarte15/Site-Karine-Duarte-Developer.git
 cd Site-Karine-Duarte-Developer
-
-
-### 2. Instale as dependências
-
-```bash
 npm install
-```
-
-### 3. Configure as variáveis de ambiente
-
-Crie um arquivo `.env.local` na raiz do projeto e adicione:
-
-```env
-NEXT_PUBLIC_SUPABASE_URL=sua_url_do_supabase
-NEXT_PUBLIC_SUPABASE_ANON_KEY=sua_chave_anonima_publica
-```
-
-### 4. Inicie o servidor de desenvolvimento
-
-```bash
 npm run dev
-```
-
-Acesse em:
-👉 [http://localhost:3000](http://localhost:3000)
-
----
-
-## 🗄️ Configuração do Banco de Dados (Supabase)
-
-Para o funcionamento completo do formulário de contacto:
-
-### 1. Criação da tabela
-
-O projeto espera uma tabela **contacts_modal** com campos como:
-`nome`, `email`, `mensagem`, `created_at`.
-
-### 2. Permissões (Row Level Security)
-
-Execute no **SQL Editor do Supabase**:
-
-```sql
--- Habilita segurança a nível de linha
+⚙️ Configuração do Supabase
 ALTER TABLE contacts_modal ENABLE ROW LEVEL SECURITY;
 
--- Cria política para permitir inserção pública (anónima e autenticada)
 CREATE POLICY "Permitir Inserção Pública"
 ON contacts_modal
 FOR INSERT
 TO anon, authenticated
 WITH CHECK (true);
-```
 
----
+📬 Contacto
 
-## 🚀 Deployment
+📌 GitHub: https://github.com/KarineDuarate15
 
-O site está otimizado para deploy na **Vercel**.
+📌 LinkedIn: https://linkedin.com/in/karine-duarte
 
-⚠️ **Importante:**
-Na Vercel, adicione as variáveis de ambiente:
+🇺🇸 English Version
+<h2 id="english-version"></h2> <h1 align="center">🌟 Portfolio — Karine Duarte 🌟</h1> <p align="center"> <img src="public/mockup-light.png" width="80%" alt="Portfolio Mockup"/> </p>
+✨ About Me
 
-* `NEXT_PUBLIC_SUPABASE_URL`
-* `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+I’m a Full-Stack Developer, Data Analyst, and Tech Lead focused on creating impactful digital solutions.
 
-em:
-**Project → Settings → Environment Variables**
+Experience Highlights
 
----
+Architectural planning & clean code
 
-## ⚖️ Licença e Direitos Autorais
+Managing and mentoring dev teams
 
-O código-fonte pode ser consultado e estudado.
-No entanto, a **identidade visual** (logotipo, cores, layout, tipografia, imagens) é propriedade de **Karine Duarte** e **não pode ser copiada ou reutilizada** sem autorização.
+Reviewing PRs and enforcing standards
 
-**Copyright ©
-2025 Karine Duarte. Todos os direitos reservados.**
+API integrations & full-stack solutions
 
----
+Data analytics & dashboards
 
-## 📬 Contacto
+Agile leadership
 
-* **GitHub:** [https://github.com/KarineDuarte15](https://github.com/KarineDuarte15)
-* **LinkedIn:** Karine Duarte
+🛠 Tech Stack
 
-```
+React • Next.js • TypeScript • Supabase • PostgreSQL • TailwindCSS • Python • Docker • Node.js
 
-Se quiser, posso transformar isso em um **README.md otimizado para GitHub**, com badges, screenshots e seções adicionais. Quer que eu melhore ainda mais?
-```
+📭 Contact
+
+GitHub: https://github.com/KarineDuarte15
+
+LinkedIn: https://linkedin.com/in/karine-duarte
+
+<p align="center"><b>© 2025 Karine Duarte — All rights reserved.</b></p> ```
