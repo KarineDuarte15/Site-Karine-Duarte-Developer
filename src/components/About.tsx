@@ -5,7 +5,7 @@ import Image from 'next/image';
 import RevealOnScroll from './RevealOnScroll';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-import { FaDownload, FaTable, FaProjectDiagram, FaTasks, FaCog, FaJava, FaChartBar } from 'react-icons/fa';
+import { FaDownload, FaTable, FaProjectDiagram, FaTasks, FaCog, FaJava, FaChartBar, FaFileAlt } from 'react-icons/fa';
 import {
   SiPython,
   SiFastapi,
@@ -102,15 +102,29 @@ export default function About() {
                     );
                   })}
                 </div>
-
+                <div className="flex flex-wrap gap-4">
                 <a
-                  href="/Erika Karine Duarte 2025.2 currículo lattes.pdf"
+                  href="/Currículo Erika Karine 2026.1 Lattes.pdf"
                   download
                   className="inline-flex items-center gap-3 bg-[#F4C542] text-[#0D1B2A] font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-white transition-transform duration-300 hover:scale-105"
                 >
                   <FaDownload />
                   {t.downloadCv} {/* <--- Tradução do botão */}
-                </a> 
+                </a>
+
+                {/* Botão 2: Carta de Apresentação (NOVO) */}
+                  
+                <a
+                    href="/Carta de Apresentação Erika Karine 2026.1 Lattes.pdf" 
+                    download
+                    className="inline-flex items-center gap-3 bg-[#1B263B] text-[#F4C542] border border-[#F4C542] font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-[#F4C542] hover:text-[#0D1B2A] transition-all duration-300 hover:scale-105"
+                >
+                  <FaFileAlt />
+                  {t.coverLetter}
+                </a>
+
+                </div> 
+
               </RevealOnScroll>
             </div>
             

@@ -26,6 +26,7 @@ const translations = {
     aboutText2: 'Atuo como Desenvolvedora Full-Stack e Analista de Dados, utilizando um arsenal de tecnologias para construir sistemas eficientes, automatizar processos e transformar dados brutos em insights valiosos que impulsionam decisões.',
     techSkills: 'Habilidades Técnicas',
     downloadCv: 'Download CV',
+    coverLetter: 'Carta de Apresentação',
 
     // Seções (Títulos)
     journeyTitle: 'Minha Jornada',
@@ -70,6 +71,7 @@ const translations = {
     aboutText2: 'I work as a Full-Stack Developer and Data Analyst, using an arsenal of technologies to build efficient systems, automate processes, and transform raw data into valuable insights that drive decisions.',
     techSkills: 'Technical Skills',
     downloadCv: 'Download CV',
+    coverLetter: 'Cover Letter',
 
     journeyTitle: 'My Journey',
     projectsTitle: 'My Projects',
@@ -110,6 +112,7 @@ const translations = {
     aboutText2: 'Ich arbeite als Full-Stack-Entwickler und Datenanalyst und nutze ein Arsenal an Technologien, um effiziente Systeme zu bauen, Prozesse zu automatisieren und Rohdaten in wertvolle Erkenntnisse umzuwandeln, die Entscheidungen vorantreiben.',
     techSkills: 'Technische Fähigkeiten',
     downloadCv: 'Lebenslauf Herunterladen',
+    coverLetter: 'Anschreiben',
 
     journeyTitle: 'Meine Reise',
     projectsTitle: 'Meine Projekte',
