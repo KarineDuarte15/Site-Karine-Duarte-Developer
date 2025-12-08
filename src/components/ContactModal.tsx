@@ -68,7 +68,9 @@ export default function ContactModal() {
       setTimeout(() => setIsOpen(false), 3000); 
 
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.error('Erro:', error);
+      
       setStatus('Erro ao enviar. Tente novamente.');
     }
   };
