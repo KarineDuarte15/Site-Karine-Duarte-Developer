@@ -1,6 +1,3 @@
-Aqui está todo o conteúdo convertido em **Markdown limpo, organizado e totalmente formatado**:
-
-````markdown
 # Portfólio Karine Duarte - Desenvolvedora Full-Stack e Analista de Dados
 
 <img src="public/Logo1.png" alt="Logo Karine Duarte Developer" width="150"/>
@@ -50,7 +47,7 @@ Este projeto utiliza as versões mais recentes e seguras do ecossistema React:
 ```bash
 git clone https://github.com/KarineDuarte15/Site-Karine-Duarte-Developer.git
 cd Site-Karine-Duarte-Developer
-````
+
 
 ### 2. Instale as dependências
 
