@@ -108,16 +108,6 @@ Projetos liderados:
 
 ---
 
-## 💻 Como Rodar Localmente
-
-```bash
-git clone https://github.com/KarineDuarte15/Site-Karine-Duarte-Developer.git
-cd Site-Karine-Duarte-Developer
-npm install
-npm run dev
-
----
-
 ## 📬 Contacto
 
 📌 **GitHub:** https://github.com/KarineDuarate15  
