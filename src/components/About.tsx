@@ -65,6 +65,7 @@ const skillIcons: Record<string, React.ElementType> = {
   "SQL": FaProjectDiagram,
   "Agile Methodologies": FaProjectDiagram,
   "Scrum": FaTasks,
+  "Kanban": FaTasks,
   "ETL": FaProjectDiagram
 };
 

@@ -1,4 +1,3 @@
-// src/components/ContactModal.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -6,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { FaTimes } from 'react-icons/fa';
 import { supabase } from '@/lib/supabaseClient';
+import emailjs from '@emailjs/browser'; // <--- Importar EmailJS
 
 export default function ContactModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +13,7 @@ export default function ContactModal() {
   const [contactPreference, setContactPreference] = useState('Via WhatsApp');
 
   useEffect(() => {
+    // Verifica se já foi mostrado na sessão
     if (!sessionStorage.getItem('contactModalSeen')) {
       const timer = setTimeout(() => {
         setIsOpen(true);
@@ -36,17 +37,39 @@ export default function ContactModal() {
     const city = formData.get('city') as string;
     const activity = formData.get('activity') as string;
     
-    const { error } = await supabase
-      .from('contacts_modal')
-      .insert([{ name, phone, email, city, activity, contact_preference: contactPreference }]);
+    try {
+      // 1. Salvar no Supabase
+      const { error: dbError } = await supabase
+        .from('contacts_modal')
+        .insert([{ name, phone, email, city, activity, contact_preference: contactPreference }]);
 
-    if (error) {
-      setStatus('Erro ao enviar. Tente novamente.');
-      console.error('Erro do Supabase:', error);
-    } else {
+      if (dbError) throw dbError;
+
+      // 2. Enviar Email via EmailJS
+      // Substitua os IDs abaixo pelos seus do EmailJS
+      await emailjs.send(
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!, // Use assim
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!, 
+        {
+          source: 'Modal de Consultoria (Pop-up)',
+          name: name,
+          email: email,
+          phone: phone,
+          city: city,
+          activity: activity,
+          contact_preference: contactPreference,
+          message: 'Solicitação de consultoria via modal.' // Mensagem fixa para o modal
+        },
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!   
+      );
+
       setStatus('Mensagem enviada! Entraremos em contato em breve.');
       form.reset();
-      setTimeout(() => setIsOpen(false), 2500); 
+      setTimeout(() => setIsOpen(false), 3000); 
+
+    } catch (error) {
+      console.error('Erro:', error);
+      setStatus('Erro ao enviar. Tente novamente.');
     }
   };
   
@@ -57,41 +80,37 @@ export default function ContactModal() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 p-4 backdrop-blur-sm"
           onClick={() => setIsOpen(false)}
         >
-          {/* AS MUDANÇAS ESTÃO AQUI ABAIXO */}
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ type: 'spring', stiffness: 200, damping: 25 }}
-            // 1. max-h-[90vh]: Limita a altura do modal a 90% da altura da tela.
-            // 2. overflow-y-auto: Cria uma barra de rolagem se o conteúdo for maior que a altura máxima.
             className="bg-white rounded-xl shadow-2xl w-full max-w-4xl relative max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <button 
               onClick={() => setIsOpen(false)}
-              className="absolute top-3 right-3 text-gray-400 hover:text-gray-700 transition-colors z-10"
+              className="absolute top-3 right-3 text-gray-400 hover:text-red-500 transition-colors z-10"
               aria-label="Fechar modal"
             >
-              <FaTimes size={20} />
+              <FaTimes size={24} />
             </button>
             
-            {/* O layout de grid já é responsivo por padrão (empilha em telas pequenas) */}
             <div className="grid md:grid-cols-2">
-              <div className="p-8 md:p-10 flex flex-col justify-center bg-gray-50/50 relative">
-                <div className="absolute bottom-8 left-8 grid grid-cols-5 gap-2 opacity-30">
+              <div className="p-8 md:p-10 flex flex-col justify-center bg-gray-50 relative">
+                <div className="absolute bottom-8 left-8 grid grid-cols-5 gap-2 opacity-20">
                   {Array.from({ length: 25 }).map((_, i) => (
-                    <div key={i} className="w-1.5 h-1.5 bg-blue-200 rounded-full"></div>
+                    <div key={i} className="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
                   ))}
                 </div>
 
                 <h2 className="text-3xl font-bold text-[#0D1B2A] mb-3" style={{ fontFamily: 'var(--font-montserrat)' }}>Ficou com alguma dúvida?</h2>
-                <p className="text-gray-500 mb-6">Preencha as informações ao lado que em breve entraremos em contato com você.</p>
-                <div className="relative w-48 h-48 rounded-md overflow-hidden self-center">
-                  <Image src="/profile11.png" alt="Karine Duarte" layout="fill" objectFit="cover" />
+                <p className="text-gray-600 mb-6">Preencha as informações ao lado que em breve entraremos em contato com você.</p>
+                <div className="relative w-48 h-48 rounded-full border-4 border-white shadow-lg overflow-hidden self-center">
+                  <Image src="/profile9.png" alt="Karine Duarte" layout="fill" objectFit="cover" />
                 </div>
               </div>
 
@@ -112,15 +131,15 @@ export default function ContactModal() {
                     <input type="email" name="email" placeholder="seu.email@mail.com.br" required className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#F4C542]" />
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-700">Em qual cidade sua empresa está situada?</label>
+                    <label className="text-sm font-medium text-gray-700">Qual a sua cidade?</label>
                     <input type="text" name="city" placeholder="Ex: São Paulo" required className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#F4C542]" />
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-700">Descrição da atividade que você exercerá na empresa</label>
+                    <label className="text-sm font-medium text-gray-700">Descrição do serviço  de interesse</label>
                     <input type="text" name="activity" placeholder="Ex: programador, consultor de marketing" required className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#F4C542]" />
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-700 mb-2 block">Como prefere que entremos em contato com você?</label>
+                    <label className="text-sm font-medium text-gray-700 mb-2 block">Como prefere que minha equipe entre em contato com você?</label>
                     <div className="flex gap-2">
                       <button type="button" onClick={() => setContactPreference('Via WhatsApp')} className={`flex-1 py-2 px-4 rounded-md border text-sm transition-colors ${contactPreference === 'Via WhatsApp' ? 'bg-blue-100 border-blue-400 text-blue-800' : 'bg-white border-gray-300 text-gray-600 hover:bg-gray-50'}`}>
                         Via WhatsApp
@@ -131,7 +150,7 @@ export default function ContactModal() {
                     </div>
                   </div>
                   
-                  <button type="submit" className="w-full bg-[#706649] text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:bg-[#5b523a] transition-colors duration-300">
+                  <button type="submit" className="w-full bg-[#0D1B2A] text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:bg-[#F4C542] hover:text-[#0D1B2A] transition-colors duration-300">
                     Agendar Consultoria
                   </button>
                   {status && <p className="mt-2 text-center text-sm text-gray-600">{status}</p>}
