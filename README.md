@@ -100,14 +100,6 @@ Projetos liderados:
 
 ---
 
-## 🐍 Snake — Minhas Contribuições
-
-<p align="center">
-<img src="https://www.google.com/search?q=https://raw.githubusercontent.com/KarineDuarte15/Site-Karine-Duarte-Developer/output/github-contribution-grid-snake.svg" alt="Snake Animation"/>
-</p>
-
----
-
 ## 📬 Contacto
 
 📌 **GitHub:** https://github.com/KarineDuarate15  
