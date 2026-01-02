@@ -8,10 +8,14 @@ import RevealOnScroll from './RevealOnScroll';
 
 // Lista de imagens (seu array existente)
 const eventImages = [
+  { src: '/eventodagoogle.jpeg', alt: 'Evento Google em Fortaleza' },
   { src: '/profile2.png', alt: 'Evento Transforme-se Serasa Experian' },
+  { src: '/eventodagoogle1.jpeg', alt: 'Evento Google em Fortaleza' },
   { src: '/profile30.jpeg', alt: 'Hackathon Game Jam' },
+  { src: '/eventodagoogle2.jpeg', alt: 'Evento Google em Fortaleza' },
   { src: '/profile6.jpeg', alt: 'Formatura em Análise e Desenvolvimento de Sistemas' },
   { src: '/profile4.png', alt: 'Evento Transforme-se Serasa Experian' },
+  { src: '/felipecastanhari.jpeg', alt: 'encontro com castanhari' },
   { src: '/profile1.png', alt: 'Gravação em estúdio Unifor' },
   { src: '/profile14.jpeg', alt: 'Front-end Day 2025' },
   { src: '/profile15.jpeg', alt: 'Palestra Git Together' },
@@ -39,7 +43,7 @@ export default function EventsGallery() {
       <ParticlesBackground id="particles-events">
         <div className="py-20">
           <div className="container mx-auto">
-            
+
             <RevealOnScroll>
               <h2 className="text-4xl font-bold text-center mb-16 font-heading text-[#F4C542]">
                 Momentos da Carreira
@@ -50,11 +54,11 @@ export default function EventsGallery() {
               <div className="group w-full overflow-hidden">
                 <div className="inline-flex animate-marquee group-hover:[animation-play-state:paused]">
                   {allImages.map((image, index) => (
-                    <div key={index} className="relative w-72 h-80 mx-4 flex-shrink-0 border-2 border-[#F4C542]/20 rounded-lg overflow-hidden">
+                    <div key={index} className="relative w-72 h-80 mx-4 flex-shrink-0 border-1 border-[#F4C542]/20 rounded-lg overflow-hidden">
                       <Image
                         src={image.src}
                         alt={image.alt}
-                        fill 
+                        fill
                         className="object-cover transition-transform duration-500 hover:scale-110"
                       />
                     </div>
