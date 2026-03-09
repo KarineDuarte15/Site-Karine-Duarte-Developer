@@ -1,30 +1,129 @@
 // src/components/WhatsAppButton.tsx
 'use client';
 
-import { FaWhatsapp } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaWhatsapp, FaTimes, FaPaperPlane } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function WhatsAppButton() {
-  // Substitua 'SEUNUMERO' pelo seu número de WhatsApp com o código do país. Ex: 5585986649122
-  const phoneNumber = '5585986649122'; 
-  const message = 'Olá! Gostaria de mais informações sobre seus serviços.';
-  
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  const [isOpen, setIsOpen] = useState(false);
+  const [customMessage, setCustomMessage] = useState('');
+
+  // Substitui pelo teu número (com código do país e DDD)
+  const phoneNumber = '5585986649122';
+
+  // Lista de mensagens predefinidas com base no teu perfil profissional
+  const predefinedMessages = [
+    'Olá! Gostaria de um orçamento para desenvolvimento de software.',
+    'Tenho interesse em convidá-la para uma palestra ou evento.',
+    'Quero uma consultoria técnica para o meu projeto.',
+    'Gostaria de falar sobre uma oportunidade profissional.',
+  ];
+
+  // Função para enviar a mensagem redirecionando para o WhatsApp
+  const handleSendMessage = (message: string) => {
+    if (!message.trim()) return;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+    setCustomMessage(''); // Limpa o campo após enviar
+    setIsOpen(false); // Fecha o modal após enviar
+  };
 
   return (
-    <a
-      href={whatsappUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group fixed bottom-8 right-8 z-50 flex items-center justify-center w-16 h-16 bg-green-500 rounded-full shadow-lg hover:bg-green-600 transition-transform duration-300 hover:scale-110"
-      aria-label="Fale conosco pelo WhatsApp"
-    >
-      <FaWhatsapp className="text-white text-4xl" />
-      
-      {/* Tooltip com a mensagem */}
-      <div className="absolute bottom-1/2 mb-[-10px] right-full mr-4 px-4 py-2 bg-gray-800 text-white text-sm rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-        Olá, precisa de ajuda?
-        <div className="absolute right-[-5px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-8 border-l-gray-800"></div>
-      </div>
-    </a>
+    <>
+      {/* MODAL DE CHAT DO WHATSAPP */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            transition={{ duration: 0.3 }}
+            className="fixed bottom-28 right-6 z-50 w-[340px] md:w-[380px] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-gray-200"
+          >
+            {/* Cabeçalho */}
+            <div className="bg-white p-4 flex items-center justify-between border-b border-gray-100">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                  <FaWhatsapp className="text-green-500 text-2xl" />
+                </div>
+                <div>
+                  <h3 className="font-bold text-gray-800 text-sm">Karine Duarte</h3>
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                    <span className="text-xs text-green-600 font-medium">Online agora</span>
+                  </div>
+                </div>
+              </div>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-gray-400 hover:text-gray-600 transition-colors p-2"
+              >
+                <FaTimes size={18} />
+              </button>
+            </div>
+
+            {/* Corpo do Chat (Mensagens Predefinidas) */}
+            <div className="bg-[#f0f2f5] p-4 h-[320px] overflow-y-auto flex flex-col gap-3">
+              <span className="text-xs font-bold text-gray-500 mb-1 uppercase tracking-wider">
+                Como posso ajudar?
+              </span>
+
+              {predefinedMessages.map((msg, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleSendMessage(msg)}
+                  className="bg-white p-3 rounded-xl rounded-tl-sm shadow-sm text-sm text-gray-700 hover:bg-green-50 text-left transition-colors border border-gray-100 hover:border-green-200"
+                >
+                  {msg}
+                </button>
+              ))}
+            </div>
+
+            {/* Rodapé (Campo de Digitação) */}
+            <div className="p-3 bg-white border-t border-gray-200 flex items-center gap-2">
+              <input
+                type="text"
+                placeholder="Digite sua mensagem..."
+                value={customMessage}
+                onChange={(e) => setCustomMessage(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') handleSendMessage(customMessage);
+                }}
+                className="flex-1 bg-gray-100 text-gray-800 text-sm rounded-full px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-green-400"
+              />
+              <button
+                onClick={() => handleSendMessage(customMessage)}
+                disabled={!customMessage.trim()}
+                className="w-10 h-10 rounded-full bg-green-500 text-white flex items-center justify-center shrink-0 hover:bg-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <FaPaperPlane className="ml-[-2px]" />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* BOTÃO FLUTUANTE */}
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="group fixed bottom-8 right-6 md:right-8 z-50 flex items-center justify-center w-16 h-16 bg-green-500 rounded-full shadow-[0_4px_14px_0_rgba(34,197,94,0.39)] hover:bg-green-600 hover:shadow-[0_6px_20px_rgba(34,197,94,0.23)] transition-all duration-300 hover:scale-110 focus:outline-none"
+        aria-label="Fale conosco pelo WhatsApp"
+      >
+        {isOpen ? (
+          <FaTimes className="text-white text-3xl" />
+        ) : (
+          <FaWhatsapp className="text-white text-4xl" />
+        )}
+
+        {/* Tooltip com a mensagem (Só aparece se o modal estiver fechado) */}
+        {!isOpen && (
+          <div className="absolute bottom-1/2 mb-[-10px] right-full mr-4 px-4 py-2 bg-gray-800 text-white text-sm rounded-md shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap hidden md:block">
+            Olá, precisa de ajuda?
+            <div className="absolute right-[-5px] top-1/2 -translate-y-1/2 w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-l-8 border-l-gray-800"></div>
+          </div>
+        )}
+      </button>
+    </>
   );
 }
