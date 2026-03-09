@@ -97,7 +97,7 @@ export default function About() {
                       Graduação
                     </span>
                     <h3 className="text-white font-bold text-xl md:text-2xl font-heading mb-4 leading-tight">
-                      Ciência da Computação
+                      Ciências da Computação
                     </h3>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-auto text-slate-400 text-sm font-mono">
                       <span className="flex items-center gap-2 bg-[#112240] px-4 py-2 rounded-full border border-slate-700">
