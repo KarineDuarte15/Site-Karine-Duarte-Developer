@@ -1,8 +1,10 @@
+// src/components/Projects.tsx
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { FaGithub, FaStar } from 'react-icons/fa';
-import { FiExternalLink } from 'react-icons/fi';
+// Mudança: Usar 'react-icons' que já tens instalado para evitar erros de imagem/ícone
+import { FiExternalLink, FiChevronLeft, FiChevronRight, FiTerminal, FiCode } from 'react-icons/fi';
 import ParticlesBackground from './ParticlesBackground';
 import RevealOnScroll from './RevealOnScroll';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -10,11 +12,11 @@ import { useLanguage } from '@/contexts/LanguageContext';
 // Importações do Swiper
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules';
+import { Swiper as SwiperType } from 'swiper';
 
-// Importação dos estilos do Swiper
 import 'swiper/css';
-import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+// Nota: Não importamos 'swiper/css/navigation' para evitar carregar estilos das setas antigas
 
 // Tipos
 type ProjectCategory = 'Todos' | 'Full Stack' | 'Front-end' | 'Back-end' | 'Lógica & Java';
@@ -32,6 +34,7 @@ interface Project {
 export default function Projects() {
   const { t, language } = useLanguage();
   const [activeCategory, setActiveCategory] = useState<ProjectCategory>('Todos');
+  const swiperRef = useRef<SwiperType | null>(null);
 
   const categories: ProjectCategory[] = ['Todos', 'Full Stack', 'Front-end', 'Back-end', 'Lógica & Java'];
 
@@ -43,7 +46,7 @@ export default function Projects() {
         description: 'Aplicação Web completa para emissão de notas fiscais e gestão fiscal. Destaque pela complexidade de regras de negócio.',
         technologies: ['Node.js', 'PostgreSQL', 'API Rest', 'Back-end'],
         githubUrl: 'https://github.com/Tax-Med/Taxmede-backend',
-        demoUrl: null,
+        demoUrl: 'https://www.taxmed.com.br/',
         category: 'Full Stack',
         highlight: true,
       },
@@ -288,183 +291,187 @@ export default function Projects() {
     ]
   };
 
-  const allProjects = projectsDataMap[language] || projectsDataMap['pt'];
+  const allProjects = projectsDataMap[language] && projectsDataMap[language].length > 0
+    ? projectsDataMap[language]
+    : projectsDataMap['pt'];
 
-  // Filtro
   const filteredProjects = activeCategory === 'Todos'
     ? allProjects
-    : allProjects.filter(project => project.category === activeCategory || (activeCategory === 'Full Stack' && project.highlight));
+    : allProjects.filter(project => project.category === activeCategory);
 
   const sortedProjects = [...filteredProjects].sort((a, b) => (b.highlight ? 1 : 0) - (a.highlight ? 1 : 0));
 
   return (
-    <section id="projects">
+    <section id="projects" className="relative overflow-hidden">
       <ParticlesBackground id="particles-projects">
-        <div className="container mx-auto px-6 py-24">
+        <div className="container mx-auto px-6 py-24 relative z-10">
 
           <RevealOnScroll>
-            <h2 className="text-4xl font-bold text-center mb-8 font-heading text-[#F4C542]">
-              {t.projectsTitle}
-            </h2>
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <FiTerminal className="text-[#F4C542]" size={32} />
+              <h2 className="text-4xl font-bold text-center font-heading text-[#F4C542]">
+                {t.projectsTitle}
+              </h2>
+            </div>
           </RevealOnScroll>
 
-          {/* --- FILTRO DE CATEGORIAS (Visual Novo e Elegante - Pílulas Finas) --- */}
+          {/* FILTRO */}
           <RevealOnScroll delay={0.1}>
-            <div className="flex flex-wrap justify-center gap-2 mb-12">
+            <div className="flex flex-wrap justify-center gap-4 mb-12">
               {categories.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
                   className={`
-                    px-5 py-1.5 rounded-full text-xs font-bold transition-all duration-300 border
+                    font-mono text-sm px-4 py-2 rounded transition-all duration-300 border-b-2
                     ${activeCategory === cat
-                      ? 'bg-[#F4C542] text-[#0D1B2A] border-[#F4C542] shadow-md transform scale-105'
-                      : 'bg-transparent text-gray-400 border-gray-600 hover:border-[#F4C542] hover:text-[#F4C542]'
+                      ? 'text-[#F4C542] border-[#F4C542] bg-[#F4C542]/10'
+                      : 'text-gray-500 border-transparent hover:text-gray-300 hover:border-gray-600'
                     }
                   `}
                 >
-                  {cat}
+                  {`> ${cat}`}
                 </button>
               ))}
             </div>
           </RevealOnScroll>
 
           <RevealOnScroll delay={0.2}>
-            <Swiper
-              modules={[Navigation, Pagination, A11y, Autoplay]}
-              spaceBetween={24}
-              slidesPerView={1}
-              navigation
-              pagination={{ clickable: true, dynamicBullets: true }}
-              autoplay={{ delay: 6000, disableOnInteraction: true }}
-              breakpoints={{
-                640: { slidesPerView: 1 },
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 },
-              }}
-              className="pb-14 px-4"
-            >
-              {sortedProjects.map((project, index) => (
-                <SwiperSlide key={index} className="h-auto">
+            {/* CONTAINER COM PADDING LATERAL PARA OS BOTÕES */}
+            <div className="relative group/slider px-4 md:px-14">
 
-                  {/* CARD DO PROJETO */}
-                  <div className={`
-                    relative bg-[#1B263B] rounded-xl overflow-hidden flex flex-col h-full group transition-all duration-300
-                    border border-white/5 hover:border-[#F4C542] hover:-translate-y-1 hover:shadow-2xl
-                    ${project.highlight ? 'ring-1 ring-[#F4C542]/50' : ''}
-                  `}>
+              <Swiper
+                modules={[Navigation, Pagination, A11y, Autoplay]}
+                spaceBetween={24} // Espaço entre os cards
+                slidesPerView={1}
+                onBeforeInit={(swiper) => {
+                  swiperRef.current = swiper;
+                }}
+                pagination={{ clickable: true, dynamicBullets: true }}
+                autoplay={{ delay: 6000, disableOnInteraction: true }}
+                // BREAKPOINTS EXATOS: 1, 2 ou 3
+                breakpoints={{
+                  640: { slidesPerView: 1 },
+                  768: { slidesPerView: 2 },
+                  1280: { slidesPerView: 3 }, // Ajustei para 1280px para garantir que 3 cabem folgados
+                }}
+                // Padding dentro do swiper para a sombra não cortar, mas overflow hidden fora
+                className="pb-14 !px-4"
+              >
+                {sortedProjects.map((project, index) => (
+                  <SwiperSlide key={index} className="h-auto py-4">
 
-                    {/* Badge Destaque (Se houver) */}
-                    {project.highlight && (
-                      <div className="absolute top-0 left-0 bg-[#F4C542] text-[#0D1B2A] text-[10px] font-bold px-3 py-1 rounded-br-lg z-20 shadow-md flex items-center gap-1">
-                        <FaStar size={10} /> Destaque
-                      </div>
-                    )}
+                    {/* CARD ULTRA MODERNO */}
+                    <div className={`
+                      relative rounded-xl overflow-hidden flex flex-col h-full 
+                      bg-[#112240]/90 backdrop-blur-sm
+                      border border-slate-700/50 
+                      transition-all duration-500 ease-out
+                      hover:-translate-y-2 
+                      hover:border-cyan-500/50 
+                      hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]
+                      group/card
+                    `}>
 
-                    <div className="p-6 flex-grow flex flex-col">
+                      {/* Linha Topo */}
+                      <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500"></div>
 
-                      {/* --- CABEÇALHO COM CATEGORIA E LINKS --- */}
-                      <div className="flex justify-between items-start mb-4 mt-2">
-                        {/* Categoria */}
-                        <span className="text-[10px] uppercase tracking-wider font-bold text-[#F4C542] bg-[#F4C542]/10 px-2 py-1 rounded border border-[#F4C542]/20">
-                          {project.category}
-                        </span>
+                      <div className="p-6 flex-grow flex flex-col relative z-10">
 
-                        {/* ÍCONES DE LINK (GitHub e Site) - Estilo Clássico Restaurado */}
-                        <div className="flex gap-3">
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-gray-400 hover:text-white transition-colors hover:scale-110 transform"
-                            title="Ver Código no GitHub"
-                          >
-                            <FaGithub size={20} />
-                          </a>
+                        <div className="flex justify-between items-start mb-6">
+                          <div className="p-2 bg-slate-800/50 rounded-lg text-cyan-500 group-hover/card:text-[#F4C542] transition-colors">
+                            <FiCode size={20} />
+                          </div>
 
-                          {project.demoUrl ? (
-                            <a
-                              href={project.demoUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="text-gray-400 hover:text-[#F4C542] transition-colors hover:scale-110 transform"
-                              title="Visitar Site"
-                            >
-                              <FiExternalLink size={20} />
+                          <div className="flex gap-3">
+                            <a href={project.githubUrl} target="_blank" className="text-slate-400 hover:text-white hover:scale-110 transition-all p-1">
+                              <FaGithub size={20} />
                             </a>
-                          ) : (
-                            // Espaço reservado para manter alinhamento
-                            <div className="w-[20px]"></div>
-                          )}
+                            {project.demoUrl && (
+                              <a href={project.demoUrl} target="_blank" className="text-slate-400 hover:text-[#F4C542] hover:scale-110 transition-all p-1">
+                                <FiExternalLink size={20} />
+                              </a>
+                            )}
+                          </div>
+                        </div>
+
+                        <h3 className="text-xl text-white font-bold mb-3 font-heading tracking-tight group-hover/card:text-cyan-400 transition-colors">
+                          {project.title}
+                        </h3>
+
+                        <div className="mb-4">
+                          <span className="text-[10px] uppercase font-bold tracking-widest text-[#F4C542]/80 font-mono">
+                             //{project.category}
+                          </span>
+                        </div>
+
+                        <p className="text-slate-400 text-sm mb-6 leading-relaxed flex-grow font-sans border-l-2 border-slate-700 pl-3">
+                          {project.description}
+                        </p>
+
+                        <div className="flex flex-wrap gap-2 mt-auto">
+                          {project.technologies.map((tech) => (
+                            <span key={tech} className="px-2 py-1 text-[10px] rounded bg-slate-800/80 text-cyan-300/80 font-mono border border-cyan-900/30 group-hover/card:border-cyan-500/30 transition-colors">
+                              {tech}
+                            </span>
+                          ))}
                         </div>
                       </div>
 
-                      {/* Título */}
-                      <h3 className="text-lg text-white font-bold mb-3 font-heading group-hover:text-[#F4C542] transition-colors line-clamp-2 min-h-[3.5rem]">
-                        {project.title}
-                      </h3>
-
-                      {/* Descrição */}
-                      <p className="text-gray-400 mb-6 text-sm leading-relaxed flex-grow">
-                        {project.description}
-                      </p>
-
-                      {/* Tecnologias */}
-                      <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-white/5">
-                        {project.technologies.slice(0, 3).map((tech) => (
-                          <span key={tech} className="text-gray-300 text-[10px] bg-[#0D1B2A] px-2 py-1 rounded border border-white/10">
-                            {tech}
-                          </span>
-                        ))}
-                        {project.technologies.length > 3 && (
-                          <span className="text-gray-500 text-[10px] self-center">+{project.technologies.length - 3}</span>
-                        )}
-                      </div>
-
+                      {project.highlight && (
+                        <div className="absolute top-4 right-4 animate-pulse">
+                          <FaStar className="text-[#F4C542]" size={12} />
+                        </div>
+                      )}
                     </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              {/* CONTROLES - Bem posicionados nas laterais */}
+              <button
+                onClick={() => swiperRef.current?.slidePrev()}
+                className="absolute top-1/2 -left-2 md:-left-4 z-20 -translate-y-1/2 p-3 text-cyan-500 hover:text-[#F4C542] transition-all bg-[#0D1B2A] border border-slate-700 hover:border-[#F4C542] rounded-full shadow-lg hidden md:flex items-center justify-center group/btn"
+                aria-label="Anterior"
+              >
+                <FiChevronLeft size={24} className="group-hover/btn:-translate-x-1 transition-transform" />
+              </button>
+
+              <button
+                onClick={() => swiperRef.current?.slideNext()}
+                className="absolute top-1/2 -right-2 md:-right-4 z-20 -translate-y-1/2 p-3 text-cyan-500 hover:text-[#F4C542] transition-all bg-[#0D1B2A] border border-slate-700 hover:border-[#F4C542] rounded-full shadow-lg hidden md:flex items-center justify-center group/btn"
+                aria-label="Próximo"
+              >
+                <FiChevronRight size={24} className="group-hover/btn:translate-x-1 transition-transform" />
+              </button>
+
+            </div>
           </RevealOnScroll>
         </div>
       </ParticlesBackground>
 
-      {/* --- ESTILOS DO SWIPER --- */}
       <style jsx global>{`
         .swiper-button-next, .swiper-button-prev {
-          color: #F4C542 !important;
-          background: rgba(13, 27, 42, 0.6);
-          backdrop-filter: blur(4px);
-          width: 32px;
-          height: 32px;
-          border-radius: 50%;
-          border: 1px solid rgba(244, 197, 66, 0.3);
-          transition: all 0.3s ease;
-        }
-        .swiper-button-next:hover, .swiper-button-prev:hover {
-          background: #F4C542;
-          color: #0D1B2A !important;
-          border-color: #F4C542;
-        }
-        .swiper-button-next:after, .swiper-button-prev:after {
-          font-size: 12px !important;
-          font-weight: bold;
+          display: none !important;
         }
         .swiper-pagination-bullet {
-          background: #4B5563 !important;
+          background: #334155 !important;
           opacity: 0.5;
         }
         .swiper-pagination-bullet-active {
-          background: #F4C542 !important;
+          background: #06b6d4 !important;
           opacity: 1;
           width: 24px;
           border-radius: 4px;
+          box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
         }
-        @media (max-width: 640px) {
-          .swiper-button-next, .swiper-button-prev {
-            display: none;
-          }
+        /* Importante: Removemos o overflow: visible global do Swiper para evitar cortes feios */
+        .swiper {
+          padding-left: 4px; 
+          padding-right: 4px;
+        }
+        .swiper-wrapper {
+            align-items: stretch;
         }
       `}</style>
     </section>

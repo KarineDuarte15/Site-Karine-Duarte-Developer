@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { FaTimes } from 'react-icons/fa';
 import { supabase } from '@/lib/supabaseClient';
-import emailjs from '@emailjs/browser'; // <--- Importar EmailJS
+import emailjs from '@emailjs/browser';
+
 
 export default function ContactModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +20,7 @@ export default function ContactModal() {
         setIsOpen(true);
         sessionStorage.setItem('contactModalSeen', 'true');
       }, 2000);
-      
+
       return () => clearTimeout(timer);
     }
   }, []);
@@ -27,16 +28,16 @@ export default function ContactModal() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setStatus('Enviando...');
-    
+
     const form = event.currentTarget;
     const formData = new FormData(form);
-    
+
     const name = formData.get('name') as string;
     const phone = formData.get('phone') as string;
     const email = formData.get('email') as string;
     const city = formData.get('city') as string;
     const activity = formData.get('activity') as string;
-    
+
     try {
       // 1. Salvar no Supabase
       const { error: dbError } = await supabase
@@ -49,7 +50,7 @@ export default function ContactModal() {
       // Substitua os IDs abaixo pelos seus do EmailJS
       await emailjs.send(
         process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!, // Use assim
-        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!, 
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         {
           source: 'Modal de Consultoria (Pop-up)',
           name: name,
@@ -60,21 +61,21 @@ export default function ContactModal() {
           contact_preference: contactPreference,
           message: 'Solicitação de consultoria via modal.' // Mensagem fixa para o modal
         },
-        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!   
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
 
       setStatus('Mensagem enviada! Entraremos em contato em breve.');
       form.reset();
-      setTimeout(() => setIsOpen(false), 3000); 
+      setTimeout(() => setIsOpen(false), 3000);
 
     } catch (error) {
       // eslint-disable-next-line no-console
       console.error('Erro:', error);
-      
+
       setStatus('Erro ao enviar. Tente novamente.');
     }
   };
-  
+
   return (
     <AnimatePresence>
       {isOpen && (
@@ -93,14 +94,14 @@ export default function ContactModal() {
             className="bg-white rounded-xl shadow-2xl w-full max-w-4xl relative max-h-[90vh] overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <button 
+            <button
               onClick={() => setIsOpen(false)}
               className="absolute top-3 right-3 text-gray-400 hover:text-red-500 transition-colors z-10"
               aria-label="Fechar modal"
             >
               <FaTimes size={24} />
             </button>
-            
+
             <div className="grid md:grid-cols-2">
               <div className="p-8 md:p-10 flex flex-col justify-center bg-gray-50 relative">
                 <div className="absolute bottom-8 left-8 grid grid-cols-5 gap-2 opacity-20">
@@ -151,7 +152,7 @@ export default function ContactModal() {
                       </button>
                     </div>
                   </div>
-                  
+
                   <button type="submit" className="w-full bg-[#0D1B2A] text-white font-bold py-3 px-4 rounded-lg shadow-lg hover:bg-[#F4C542] hover:text-[#0D1B2A] transition-colors duration-300">
                     Agendar Consultoria
                   </button>

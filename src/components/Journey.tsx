@@ -1,3 +1,4 @@
+// src/components/Journey.tsx
 'use client';
 
 import ParticlesBackground from './ParticlesBackground';
@@ -8,9 +9,15 @@ import { useLanguage } from '@/contexts/LanguageContext';
 export default function Journey() {
   const { t, language } = useLanguage();
 
-  // Dados da Jornada separados por idioma
   const journeyDataMap = {
     pt: [
+      {
+        icon: <FaBriefcase />,
+        year: '2026',
+        title: 'Pós graduacão em Engenharia de Software',
+        company: 'Unifor',
+        description: 'Pós-graduação em Engenharia de Software com foco em arquitetura de software, desenvolvimento escalável e melhores práticas de engenharia.',
+      },
       {
         icon: <FaBriefcase />,
         year: '2025',
@@ -64,6 +71,13 @@ export default function Journey() {
     en: [
       {
         icon: <FaBriefcase />,
+        year: '2026',
+        title: 'Postgraduate in Software Engineering',
+        company: 'Unifor',
+        description: 'Postgraduate in Software Engineering with focus on software architecture, scalable development and best engineering practices.',
+      },
+      {
+        icon: <FaBriefcase />,
         year: '2025',
         title: 'Full Stack Developer',
         company: 'ACI Contabilidade',
@@ -115,6 +129,13 @@ export default function Journey() {
     de: [
       {
         icon: <FaBriefcase />,
+        year: '2026',
+        title: 'Postgraduiertenstudium in Softwareentwicklung',
+        company: 'Unifor',
+        description: 'Postgraduiertenstudium im Bereich Softwareentwicklung mit Schwerpunkt auf Softwarearchitektur, skalierbarer Entwicklung und bewährten Entwicklungsmethoden.',
+      },
+      {
+        icon: <FaBriefcase />,
         year: '2025',
         title: 'Full-Stack-Entwickler',
         company: 'ACI Contabilidade',
@@ -163,64 +184,78 @@ export default function Journey() {
         description: 'Technische Ausbildung zur Systemprogrammierung.',
       },
     ],
-  };
+  }
 
-  // Seleciona a lista baseada no idioma atual (fallback para pt)
-  const selectedData = journeyDataMap[language] || journeyDataMap['pt'];
+  const selectedData = journeyDataMap[language] && journeyDataMap[language].length > 0
+    ? journeyDataMap[language]
+    : journeyDataMap['pt'];
 
-  // Duplicamos a lista para garantir o loop infinito suave na animação
   const journeyDisplayData = [...selectedData, ...selectedData];
 
   return (
-    <section id="journey">
+    <section id="journey" className="relative overflow-hidden">
       <ParticlesBackground id="particles-journey">
-        <div className="py-20 overflow-hidden">
-          
-          {/* Título com Animação e Tradução */}
-          <div className="container mx-auto px-20">
+        <div className="py-24 relative z-10">
+
+          <div className="container mx-auto px-6 mb-16">
             <RevealOnScroll>
-              <h2 className="text-4xl font-bold text-center mb-16 font-heading text-[#F4C542]">
+              <h2 className="text-4xl font-bold text-center font-heading text-[#F4C542]">
                 {t.journeyTitle}
               </h2>
             </RevealOnScroll>
           </div>
 
-          {/* Animação da Linha do Tempo */}
           <RevealOnScroll delay={0.2}>
-            <div className="group relative w-full overflow-hidden">
-              <div className="relative inline-flex animate-marquee">
-                
-                {/* Linha do tempo central */}
-                <div className="absolute top-1/2 left-0 h-0.5 w-full bg-[#F4C542] -translate-y-1/2 z-0"></div>
-                
+
+            <div className="group relative w-full overflow-hidden py-20">
+
+              <div className="relative inline-flex animate-marquee hover:[animation-play-state:paused]">
+
+                <div className="absolute top-1/2 left-0 h-[2px] w-full bg-slate-800 -translate-y-1/2 z-0"></div>
+                <div className="absolute top-1/2 left-0 h-[2px] w-full bg-gradient-to-r from-transparent via-[#F4C542] to-transparent -translate-y-1/2 z-0 opacity-50 blur-sm"></div>
+
                 {journeyDisplayData.map((item, index) => (
-                  <div key={index} className="relative flex-shrink-0 w-[600px] h-[700px] flex items-center justify-center mx-4">
-                    
-                    {/* Ícone central */}
+                  <div key={index} className="relative flex-shrink-0 w-[500px] h-[500px] flex items-center justify-center mx-8">
+
                     <div className="absolute top-1/2 -translate-y-1/2 z-20 left-1/2 -translate-x-1/2">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-full border-4 border-[#F4C542] bg-[#0D1B2A] text-white">
-                        <div className="text-[#F4C542] text-xl">{item.icon}</div>
+                      <div className="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#0D1B2A] border-2 border-[#F4C542] shadow-[0_0_15px_rgba(244,197,66,0.3)] z-20 group-hover:scale-110 transition-transform duration-300">
+                        <div className="text-[#F4C542] text-xl relative z-10">{item.icon}</div>
+                        <div className="absolute inset-0 rounded-full bg-[#F4C542] opacity-20 animate-ping"></div>
                       </div>
                     </div>
 
-                    {/* Card de Conteúdo */}
-                    <div 
-                      className={`absolute left-1/2 -translate-x-1/2 w-80 p-6 rounded-lg shadow-xl border border-[#F4C542]/30 z-10 hover:scale-105 transition-transform duration-300 bg-[#1B263B]
-                      ${index % 2 === 0 ? 'bottom-[60%] mb-4' : 'top-[60%] mt-4'}`}
+                    <div
+                      className={`absolute left-1/2 -translate-x-1/2 w-96 p-6 rounded-xl 
+                      bg-[#112240]/90 backdrop-blur-md border border-slate-700/50
+                      hover:border-[#F4C542]/50 hover:shadow-[0_0_30px_rgba(244,197,66,0.1)]
+                      transition-all duration-300 z-10 group/card
+                      ${index % 2 === 0 ? 'bottom-[60%] mb-8' : 'top-[60%] mt-8'}`}
                     >
-                      {/* Seta indicativa */}
-                      <div 
-                        className={`absolute left-1/2 -translate-x-1/2 w-0 h-0 border-l-[10px] border-l-transparent border-r-[10px] border-r-transparent
-                        ${index % 2 === 0 
-                          ? 'bottom-[-10px] border-t-[10px] border-t-[#1B263B]' 
-                          : 'top-[-10px] border-b-[10px] border-b-[#1B263B]'
-                        }`}
+                      <div
+                        className={`absolute left-1/2 -translate-x-1/2 w-[2px] bg-gradient-to-b from-[#F4C542]/50 to-transparent h-8
+                        ${index % 2 === 0
+                            ? 'bottom-[-34px] rotate-180'
+                            : 'top-[-34px]'
+                          }`}
                       ></div>
 
-                      <time className="text-xs font-bold text-[#F4C542] uppercase tracking-wider">{item.year}</time>
-                      <div className="text-xs text-gray-400 mb-2">{item.company}</div>
-                      <h3 className="text-lg font-bold mb-2 font-heading text-white leading-tight">{item.title}</h3>
-                      <p className="text-sm text-gray-300 leading-relaxed">{item.description}</p>
+                      <div className="flex justify-between items-start mb-2">
+                        <time className="text-sm font-mono font-bold text-[#F4C542] bg-[#F4C542]/10 px-2 py-1 rounded">
+                          {item.year}
+                        </time>
+                      </div>
+
+                      <div className="text-xs font-mono text-cyan-500 mb-3 border-b border-slate-700 pb-2">
+                        {`@ ${item.company}`}
+                      </div>
+
+                      <h3 className="text-lg font-bold mb-2 font-heading text-white group-hover/card:text-[#F4C542] transition-colors">
+                        {item.title}
+                      </h3>
+
+                      <p className="text-sm text-slate-400 leading-relaxed font-sans">
+                        {item.description}
+                      </p>
                     </div>
 
                   </div>

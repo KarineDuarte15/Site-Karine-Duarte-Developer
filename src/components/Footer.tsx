@@ -10,7 +10,7 @@ export default function Footer() {
 
   return (
     <footer className="relative">
-      {/* Usamos h-auto ou removemos min-h-screen para o footer não ficar gigante */}
+
       <ParticlesBackground id="particles-footer" className="py-10">
         <div className="container mx-auto px-6">
           <RevealOnScroll>

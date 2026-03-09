@@ -40,7 +40,6 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-3" onClick={closeMenu}>
           <Image src="/Logo1.png" alt="Logo Karine Duarte" width={100} height={100} />
-          <span className="font-bold text-xl text-blue-950 hidden sm:block">Karine Duarte Developer</span>
         </Link>
 
         {/* Menu Desktop */}

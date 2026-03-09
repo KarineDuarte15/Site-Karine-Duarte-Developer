@@ -3,37 +3,53 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FFFFFF;       /* Fundo Branco Puro */
-  --foreground: #0D1B2A;       /* Texto Azul Escuro */
-  --card-background: #F3F4F6;  /* Cinza bem claro para cards */
+  --background: #FFFFFF;
+  /* Fundo Branco Puro */
+  --foreground: #0D1B2A;
+  /* Texto Azul Escuro */
+  --card-background: #F3F4F6;
+  /* Cinza bem claro para cards */
   --primary-accent: #F4C542;
   --secondary-accent: #0D1B2A;
-  --text-muted: #0d1625;       /* Cinza médio para textos secundários */
-  --border-color: #E5E7EB;     /* Borda suave */
+  --text-muted: #0d1625;
+  /* Cinza médio para textos secundários */
+  --border-color: #E5E7EB;
+  /* Borda suave */
 }
 
 /* 2. Definimos o TEMA ESCURO (Ativado pela classe .dark) */
 .dark {
-  --background: #0D1B2A;       /* Azul Marinho */
-  --foreground: #E5E5E5;       /* Branco/Cinza Claro */
-  --card-background: #1B263B;  /* Azul Médio */
+  --background: #0D1B2A;
+  /* Azul Marinho */
+  --foreground: #E5E5E5;
+  /* Branco/Cinza Claro */
+  --card-background: #1B263B;
+  /* Azul Médio */
   --primary-accent: #F4C542;
   --secondary-accent: #E5E5E5;
-  --text-muted: #9CA3AF;       /* Cinza claro para textos secundários */
+  --text-muted: #9CA3AF;
+  /* Cinza claro para textos secundários */
   --border-color: #06111f;
 }
 
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0D1B2A; /* Azul Marinho */
-    --foreground: #E5E5E5; /* Cinza Claro */
-    --card-background: #1B263B; /* Azul Médio */
-    --primary-accent: #F4C542; /* Amarelo Dourado */
-    --secondary-accent: #E5E5E5; /* Cinza Claro */
-    --text-muted: #E5E5E5; /* Cinza Claro */
+    --background: #0D1B2A;
+    /* Azul Marinho */
+    --foreground: #E5E5E5;
+    /* Cinza Claro */
+    --card-background: #1B263B;
+    /* Azul Médio */
+    --primary-accent: #F4C542;
+    /* Amarelo Dourado */
+    --secondary-accent: #E5E5E5;
+    /* Cinza Claro */
+    --text-muted: #E5E5E5;
+    /* Cinza Claro */
   }
 }
+
 /* Aplicamos as variáveis de cor ao corpo do documento */
 body {
   color: var(--foreground);
@@ -41,40 +57,62 @@ body {
   border-color: var(--border);
 
   color-scheme: light dark;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Transição suave */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* Transição suave */
 }
 
 /* Estilos globais adicionais */
 a {
 
-  text-decoration: none; 
+  text-decoration: none;
 }
 
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'var(--font-montserrat)', serif;
 }
-p, li, span, div {
+
+p,
+li,
+span,
+div {
   font-family: 'var(--font-roboto)', sans-serif;
 }
+
 button {
   font-family: 'var(--font-montserrat)', serif;
 }
+
 button:focus {
   outline: 2px solid var(--primary-accent);
   outline-offset: 2px;
 }
-input, textarea {
+
+input,
+textarea {
   font-family: 'var(--font-roboto)', sans-serif;
 }
-input:focus, textarea:focus {
+
+input:focus,
+textarea:focus {
   outline: 2px solid var(--primary-accent);
   outline-offset: 2px;
 }
+
 /* Animação para a rolagem infinita (marquee) */
 @keyframes marquee {
-  0% { transform: translateX(0%); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-marquee {
@@ -84,4 +122,22 @@ input:focus, textarea:focus {
 /* Opcional: Pausa a animação quando o mouse está por cima */
 .group:hover .animate-marquee {
   animation-play-state: paused;
+}
+
+@layer utilities {
+  .animate-spin-slow {
+    animation: spin 8s linear infinite;
+  }
+}
+
+/* Cria o brilho colorido */
+.tech-glow {
+  background: conic-gradient(from 0deg,
+      transparent 0deg,
+      #00d2ff 90deg,
+      /* Azul Cyan Tech */
+      #3a7bd5 180deg,
+      /* Azul Royal */
+      transparent 360deg);
+  filter: blur(20px);
 }
