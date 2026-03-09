@@ -19,6 +19,13 @@ export default function Journey() {
         description: 'Pós-graduação em Engenharia de Software com foco em arquitetura de software, desenvolvimento escalável e melhores práticas de engenharia.',
       },
       {
+        icon: <FaGraduationCap />,
+        year: '2026',
+        title: 'Graduação em Ciência da Computação',
+        company: 'Unifor',
+        description: 'Graduação com foco em desenvolvimento de software, algoritmos, estrutura de dados e fundamentos da computação.',
+      },
+      {
         icon: <FaBriefcase />,
         year: '2025',
         title: 'Desenvolvedora Full Stack',
@@ -77,6 +84,13 @@ export default function Journey() {
         description: 'Postgraduate in Software Engineering with focus on software architecture, scalable development and best engineering practices.',
       },
       {
+        icon: <FaGraduationCap />,
+        year: '2026',
+        title: 'Degree in Computer Science',
+        company: 'Unifor',
+        description: 'Degree focused on software development, algorithms, data structures, and computer fundamentals.',
+      },
+      {
         icon: <FaBriefcase />,
         year: '2025',
         title: 'Full Stack Developer',
@@ -133,6 +147,13 @@ export default function Journey() {
         title: 'Postgraduiertenstudium in Softwareentwicklung',
         company: 'Unifor',
         description: 'Postgraduiertenstudium im Bereich Softwareentwicklung mit Schwerpunkt auf Softwarearchitektur, skalierbarer Entwicklung und bewährten Entwicklungsmethoden.',
+      },
+      {
+        icon: <FaGraduationCap />,
+        year: '2026',
+        title: 'Studium der Informatik',
+        company: 'Unifor',
+        description: 'Studium mit Schwerpunkt auf Softwareentwicklung, Algorithmen, Datenstrukturen und Grundlagen der Informatik.',
       },
       {
         icon: <FaBriefcase />,
