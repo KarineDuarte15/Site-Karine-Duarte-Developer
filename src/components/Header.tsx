@@ -3,7 +3,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { FaGithub, FaLinkedin, FaBars, FaTimes } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaBars, FaTimes, FaInstagram } from 'react-icons/fa';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import ThemeToggle from './ThemeToggle';
@@ -25,6 +25,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -32,6 +33,7 @@ export default function Header() {
   const closeMenu = () => {
     setIsMenuOpen(false);
   };
+  const instagramUrl = "https://instagram.com/karinedeveloper/";
 
   return (
     <header className="fixed top-0 left-0 w-full bg-[#E5E5E5] z-50 shadow-md transition-colors">
@@ -66,6 +68,9 @@ export default function Header() {
           </a>
           <a href="https://www.linkedin.com/in/karine-duarte-developer/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <FaLinkedin className="font-bold cursor-pointer w-6 h-6 text-[#0D1B2A] hover:text-yellow-500 scale-105 hover:-translate-y-1 hover:shadow-xl transition-all" />
+          </a>
+          <a href="https://instagram.com/karinedeveloper/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <FaInstagram className="font-bold cursor-pointer w-6 h-6 text-[#0D1B2A] hover:text-yellow-500 scale-105 hover:-translate-y-1 hover:shadow-xl transition-all" />
           </a>
           <ThemeToggle />
         </div>
