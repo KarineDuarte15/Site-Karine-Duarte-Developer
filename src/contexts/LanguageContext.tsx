@@ -11,10 +11,10 @@ const translations = {
     projects: 'Projetos',
     blog: 'Blog',
     contact: 'Contato',
-    
+
     // Hero
     heroGreeting: 'Olá, eu sou',
-    heroRole1: 'Desenvolvedora Full-Stack',
+    heroRole1: 'Desenvolvedora Back-end',
     heroRole2: 'Analista de Dados',
     heroRole3: 'Analista de BI',
     heroRole4: 'Apaixonada por Tecnologia',
@@ -23,7 +23,7 @@ const translations = {
     // Sobre
     aboutTitle: 'Sobre Mim',
     aboutText1: 'Minha jornada na tecnologia começou com a curiosidade, mas se transformou em uma carreira focada em criar soluções. Com formação em Análise e Desenvolvimento de Sistemas, hoje eu conecto o poder do back-end com a inteligência da análise de dados para gerar impacto real.',
-    aboutText2: 'Atuo como Desenvolvedora Full-Stack e Analista de Dados, utilizando um arsenal de tecnologias para construir sistemas eficientes, automatizar processos e transformar dados brutos em insights valiosos que impulsionam decisões.',
+    aboutText2: 'Atuo como Desenvolvedora Back-end e Analista de Dados, utilizando um arsenal de tecnologias para construir sistemas eficientes, automatizar processos e transformar dados brutos em insights valiosos que impulsionam decisões.',
     techSkills: 'Habilidades Técnicas',
     downloadCv: 'Download CV',
     coverLetter: 'Carta de Apresentação',
@@ -60,15 +60,15 @@ const translations = {
     blog: 'Blog',
     contact: 'Contact',
     heroGreeting: 'Hi, I am',
-    heroRole1: 'Full-Stack Developer',
+    heroRole1: 'Back-end Developer',
     heroRole2: 'Data Analyst',
     heroRole3: 'BI Analyst',
     heroRole4: 'Tech Enthusiast',
     heroRole5: 'Lifelong Learner',
-    
+
     aboutTitle: 'About Me',
     aboutText1: 'My journey in technology started with curiosity but turned into a career focused on creating solutions. With a degree in Systems Analysis and Development, today I connect the power of back-end with the intelligence of data analysis to generate real impact.',
-    aboutText2: 'I work as a Full-Stack Developer and Data Analyst, using an arsenal of technologies to build efficient systems, automate processes, and transform raw data into valuable insights that drive decisions.',
+    aboutText2: 'I work as a Back-end Developer and Data Analyst, using an arsenal of technologies to build efficient systems, automate processes, and transform raw data into valuable insights that drive decisions.',
     techSkills: 'Technical Skills',
     downloadCv: 'Download CV',
     coverLetter: 'Cover Letter',
@@ -101,7 +101,7 @@ const translations = {
     blog: 'Blog',
     contact: 'Kontakt',
     heroGreeting: 'Hallo, ich bin',
-    heroRole1: 'Full-Stack Entwickler',
+    heroRole1: 'Back-end Entwickler',
     heroRole2: 'Datenanalyst',
     heroRole3: 'BI-Analyst',
     heroRole4: 'Technikbegeistert',
@@ -109,7 +109,7 @@ const translations = {
 
     aboutTitle: 'Über Mich',
     aboutText1: 'Meine Reise in die Technologie begann mit Neugier, entwickelte sich aber zu einer Karriere, die sich auf die Entwicklung von Lösungen konzentriert. Mit einem Abschluss in Systemanalyse verbinde ich heute die Kraft des Back-Ends mit der Intelligenz der Datenanalyse, um echte Wirkung zu erzielen.',
-    aboutText2: 'Ich arbeite als Full-Stack-Entwickler und Datenanalyst und nutze ein Arsenal an Technologien, um effiziente Systeme zu bauen, Prozesse zu automatisieren und Rohdaten in wertvolle Erkenntnisse umzuwandeln, die Entscheidungen vorantreiben.',
+    aboutText2: 'Ich arbeite als Back-end-Entwickler und Datenanalyst und nutze ein Arsenal an Technologien, um effiziente Systeme zu bauen, Prozesse zu automatisieren und Rohdaten in wertvolle Erkenntnisse umzuwandeln, die Entscheidungen vorantreiben.',
     techSkills: 'Technische Fähigkeiten',
     downloadCv: 'Lebenslauf Herunterladen',
     coverLetter: 'Anschreiben',
