@@ -1,3 +1,4 @@
+// src/components/ContactModal.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -7,20 +8,17 @@ import { FaTimes } from 'react-icons/fa';
 import { supabase } from '@/lib/supabaseClient';
 import emailjs from '@emailjs/browser';
 
-
 export default function ContactModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [status, setStatus] = useState('');
   const [contactPreference, setContactPreference] = useState('Via WhatsApp');
 
   useEffect(() => {
-    // Verifica se já foi mostrado na sessão
     if (!sessionStorage.getItem('contactModalSeen')) {
       const timer = setTimeout(() => {
         setIsOpen(true);
         sessionStorage.setItem('contactModalSeen', 'true');
       }, 2000);
-
       return () => clearTimeout(timer);
     }
   }, []);
@@ -39,17 +37,19 @@ export default function ContactModal() {
     const activity = formData.get('activity') as string;
 
     try {
-      // 1. Salvar no Supabase
+      // 1. TENTATIVA DE SALVAR NO SUPABASE (Independente do Email)
       const { error: dbError } = await supabase
         .from('contacts_modal')
         .insert([{ name, phone, email, city, activity, contact_preference: contactPreference }]);
 
-      if (dbError) throw dbError;
+      if (dbError) {
+        // eslint-disable-next-line no-console
+        console.warn('Aviso Supabase (Ignorado para enviar email):', dbError);
+      }
 
-      // 2. Enviar Email via EmailJS
-      // Substitua os IDs abaixo pelos seus do EmailJS
+      // 2. ENVIO GARANTIDO VIA EMAILJS
       await emailjs.send(
-        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!, // Use assim
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
         process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
         {
           source: 'Modal de Consultoria (Pop-up)',
@@ -59,7 +59,7 @@ export default function ContactModal() {
           city: city,
           activity: activity,
           contact_preference: contactPreference,
-          message: 'Solicitação de consultoria via modal.' // Mensagem fixa para o modal
+          message: 'Solicitação de consultoria via modal.'
         },
         process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
       );
@@ -70,9 +70,8 @@ export default function ContactModal() {
 
     } catch (error) {
       // eslint-disable-next-line no-console
-      console.error('Erro:', error);
-
-      setStatus('Erro ao enviar. Tente novamente.');
+      console.error('Erro geral ao enviar:', error);
+      setStatus('Erro ao enviar. Verifique sua conexão e tente novamente.');
     }
   };
 
@@ -138,7 +137,7 @@ export default function ContactModal() {
                     <input type="text" name="city" placeholder="Ex: São Paulo" required className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#F4C542]" />
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-gray-700">Descrição do serviço  de interesse</label>
+                    <label className="text-sm font-medium text-gray-700">Descrição do serviço de interesse</label>
                     <input type="text" name="activity" placeholder="Ex: programador, consultor de marketing" required className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#F4C542]" />
                   </div>
                   <div>

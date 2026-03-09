@@ -1,12 +1,13 @@
 // src/components/Footer.tsx
 import Link from 'next/link';
-import { FaGithub, FaLinkedin, FaArrowUp } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaArrowUp, FaInstagram } from 'react-icons/fa';
 import ParticlesBackground from './ParticlesBackground';
 import RevealOnScroll from './RevealOnScroll';
 
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+  const instagramUrl = "https://instagram.com/karinedeveloper/";
 
   return (
     <footer className="relative">
@@ -31,6 +32,9 @@ export default function Footer() {
                 </a>
                 <a href="https://www.linkedin.com/in/karine-duarte-developer/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                   <FaLinkedin className="w-7 h-7 hover:text-[#F4C542] transition-transform hover:scale-110 duration-300" />
+                </a>
+                <a href="https://instagram.com/karinedeveloper/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                  <FaInstagram className="w-7 h-7 hover:text-[#F4C542] transition-transform hover:scale-110 duration-300" />
                 </a>
               </div>
 
