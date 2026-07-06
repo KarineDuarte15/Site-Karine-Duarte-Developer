@@ -3,51 +3,25 @@
 @import "tailwindcss";
 
 :root {
-  --background: #FFFFFF;
-  /* Fundo Branco Puro */
-  --foreground: #0D1B2A;
-  /* Texto Azul Escuro */
-  --card-background: #F3F4F6;
-  /* Cinza bem claro para cards */
+  --background: #FFFFFF;      /* Branco puro para o fundo geral */
+  --foreground: #0D1B2A;      /* Texto azul marinho */
+  --card-background: #FFFFFF; /* Cards brancos no Light Mode para sumir com o cinza */
   --primary-accent: #F4C542;
   --secondary-accent: #0D1B2A;
-  --text-muted: #0d1625;
-  /* Cinza médio para textos secundários */
-  --border-color: #E5E7EB;
-  /* Borda suave */
+  --text-muted: #1E293B;      
+  --border-color: #E2E8F0;
 }
 
 /* 2. Definimos o TEMA ESCURO (Ativado pela classe .dark) */
 .dark {
-  --background: #0D1B2A;
-  /* Azul Marinho */
-  --foreground: #E5E5E5;
-  /* Branco/Cinza Claro */
-  --card-background: #1B263B;
-  /* Azul Médio */
+  --background: #0D1B2A;      /* Azul Marinho */
+  --foreground: #E5E5E5;      /* Branco/Cinza Claro */
+  --card-background: #1B263B; /* Azul Médio */
+  --header-bg: #E5E5E5;      
   --primary-accent: #F4C542;
   --secondary-accent: #E5E5E5;
-  --text-muted: #9CA3AF;
-  /* Cinza claro para textos secundários */
+  --text-muted: #9CA3AF;      
   --border-color: #06111f;
-}
-
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0D1B2A;
-    /* Azul Marinho */
-    --foreground: #E5E5E5;
-    /* Cinza Claro */
-    --card-background: #1B263B;
-    /* Azul Médio */
-    --primary-accent: #F4C542;
-    /* Amarelo Dourado */
-    --secondary-accent: #E5E5E5;
-    /* Cinza Claro */
-    --text-muted: #E5E5E5;
-    /* Cinza Claro */
-  }
 }
 
 /* Aplicamos as variáveis de cor ao corpo do documento */
@@ -56,7 +30,7 @@ body {
   background-color: var(--background);
   border-color: var(--border);
 
-  color-scheme: light dark;
+  color-scheme: light;
   transition: background-color 0.3s ease, color 0.3s ease;
   /* Transição suave */
 }

@@ -25,7 +25,6 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { language, setLanguage, t } = useLanguage();
 
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -36,9 +35,9 @@ export default function Header() {
   const instagramUrl = "https://instagram.com/karinedeveloper/";
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-[#E5E5E5] z-50 shadow-md transition-colors">
-      <nav className="container mx-auto px-6 py-3 flex justify-between items-center bg-[#E5E5E5]">
-
+    
+    <header className="fixed top-0 left-0 w-full bg-white z-50 shadow-md transition-colors">
+      <nav className="container mx-auto px-6 py-3 flex justify-between items-center bg-white">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-3" onClick={closeMenu}>
           <Image src="/Logo1.png" alt="Logo Karine Duarte" width={100} height={100} />
@@ -56,7 +55,6 @@ export default function Header() {
 
         {/* Ícones e Seletor de Idioma (Desktop) */}
         <div className="hidden md:flex items-center space-x-3">
-          {/* Seletor de Idioma */}
           <div className="flex space-x-1 mr-2 bg-gray-200 rounded p-1">
             <FlagButton lang="pt" current={language} onClick={() => setLanguage('pt')} label="PT" />
             <FlagButton lang="en" current={language} onClick={() => setLanguage('en')} label="EN" />
@@ -77,7 +75,6 @@ export default function Header() {
 
         {/* Mobile Toggle */}
         <div className="md:hidden flex items-center gap-2">
-          {/* Versão compacta do seletor para mobile */}
           <div className="flex space-x-1 bg-gray-200 rounded p-1">
             <button onClick={() => setLanguage('pt')} className={`text-xs font-bold p-1 ${language === 'pt' ? 'text-yellow-600' : 'text-gray-600'}`}>PT</button>
             <button onClick={() => setLanguage('en')} className={`text-xs font-bold p-1 ${language === 'en' ? 'text-yellow-600' : 'text-gray-600'}`}>EN</button>

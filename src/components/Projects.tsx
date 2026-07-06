@@ -16,7 +16,6 @@ import { Swiper as SwiperType } from 'swiper';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
-// Nota: Não importamos 'swiper/css/navigation' para evitar carregar estilos das setas antigas
 
 // Tipos
 type ProjectCategory = 'Todos' | 'Full Stack' | 'Front-end' | 'Back-end' | 'Lógica & Java';

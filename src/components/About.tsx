@@ -61,7 +61,7 @@ export default function About() {
 
             <RevealOnScroll>
               {/* TÍTULO CENTRALIZADO */}
-              <h2 className="text-4xl md:text-5xl font-bold text-white font-heading mb-12 tracking-tight">
+              <h2 className="text-4xl md:text-5xl font-bold text-yellow-400 font-heading mb-12 tracking-tight">
                 {t.aboutTitle} <span className="text-[#F4C542]">.</span>
               </h2>
             </RevealOnScroll>
