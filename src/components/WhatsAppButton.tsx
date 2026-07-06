@@ -9,8 +9,8 @@ export default function WhatsAppButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [customMessage, setCustomMessage] = useState('');
 
-  // Substitui pelo teu número (com código do país e DDD)
-  const phoneNumber = '5585986649122';
+
+  const phoneNumber = '5585997004361';
 
   // Lista de mensagens predefinidas com base no teu perfil profissional
   const predefinedMessages = [
