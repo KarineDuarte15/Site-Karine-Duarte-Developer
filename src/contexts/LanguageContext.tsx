@@ -22,8 +22,8 @@ const translations = {
 
     // Sobre
     aboutTitle: 'Sobre Mim',
-    aboutText1: 'Minha jornada na tecnologia começou com a curiosidade, mas se transformou em uma carreira focada em criar soluções. Com formação em Análise e Desenvolvimento de Sistemas, hoje eu conecto o poder do back-end com a inteligência da análise de dados para gerar impacto real.',
-    aboutText2: 'Atuo como Desenvolvedora Back-end e Analista de Dados, utilizando um arsenal de tecnologias para construir sistemas eficientes, automatizar processos e transformar dados brutos em insights valiosos que impulsionam decisões.',
+    aboutText1: 'Engenheira de Dados e Desenvolvedora Back-end, focada em transformar dados complexos em sistemas inteligentes e decisões estratégicas. Combino experiência em automação, infraestrutura e arquitetura de dados para entregar soluções escaláveis de alto impacto.',
+    aboutText2: 'Transformo dados em decisões e sistemas em soluções. Atuo na intersecção entre o desenvolvimento back-end e a engenharia de dados, criando automações e arquiteturas que garantem inteligência e performance. Com uma visão técnica de ponta a ponta — do pipeline de dados à entrega do dashboard — meu objetivo é simplificar o complexo e gerar valor tangível através de tecnologia bem estruturada.',
     techSkills: 'Habilidades Técnicas',
     downloadCv: 'Download CV',
     coverLetter: 'Carta de Apresentação',
@@ -67,8 +67,8 @@ const translations = {
     heroRole5: 'Lifelong Learner',
 
     aboutTitle: 'About Me',
-    aboutText1: 'My journey in technology started with curiosity but turned into a career focused on creating solutions. With a degree in Systems Analysis and Development, today I connect the power of back-end with the intelligence of data analysis to generate real impact.',
-    aboutText2: 'I work as a Back-end Developer and Data Analyst, using an arsenal of technologies to build efficient systems, automate processes, and transform raw data into valuable insights that drive decisions.',
+    aboutText1: 'engineer and Back-end Developer, focused on transforming complex data into intelligent systems and strategic decisions. I combine experience in automation, infrastructure, and data architecture to deliver scalable, high-impact solutions.',
+    aboutText2: 'I work at the intersection of back-end development and data engineering, creating automations and architectures that ensure intelligence and performance. With a holistic technical perspective—from data pipelines to dashboard delivery—my goal is to simplify complexity and generate tangible value through well-structured technology.',
     techSkills: 'Technical Skills',
     downloadCv: 'Download CV',
     coverLetter: 'Cover Letter',
@@ -108,8 +108,8 @@ const translations = {
     heroRole5: 'Lebenslanges Lernen',
 
     aboutTitle: 'Über Mich',
-    aboutText1: 'Meine Reise in die Technologie begann mit Neugier, entwickelte sich aber zu einer Karriere, die sich auf die Entwicklung von Lösungen konzentriert. Mit einem Abschluss in Systemanalyse verbinde ich heute die Kraft des Back-Ends mit der Intelligenz der Datenanalyse, um echte Wirkung zu erzielen.',
-    aboutText2: 'Ich arbeite als Back-end-Entwickler und Datenanalyst und nutze ein Arsenal an Technologien, um effiziente Systeme zu bauen, Prozesse zu automatisieren und Rohdaten in wertvolle Erkenntnisse umzuwandeln, die Entscheidungen vorantreiben.',
+    aboutText1: 'Ich bin Ingenieurin und Back-End-Entwicklerin, spezialisiert darauf, komplexe Daten in intelligente Systeme und strategische Entscheidungen zu verwandeln. Ich kombiniere Erfahrung in Automatisierung, Infrastruktur und Datenarchitektur, um skalierbare, wirkungsvolle Lösungen zu liefern.',
+    aboutText2: 'Ich arbeite an der Schnittstelle zwischen Back-End-Entwicklung und Datenengineering, um Automatisierungen und Architekturen zu schaffen, die Intelligenz und Leistung gewährleisten. Mit einer ganzheitlichen technischen Perspektive — von Datenpipelines bis zur Dashboard-Lieferung — zielt mein Ziel darauf ab, Komplexität zu vereinfachen und durch gut strukturierte Technologie messbaren Wert zu generieren.',
     techSkills: 'Technische Fähigkeiten',
     downloadCv: 'Lebenslauf Herunterladen',
     coverLetter: 'Anschreiben',
