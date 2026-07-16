@@ -28,8 +28,15 @@ export default function Journey() {
       {
         icon: <FaBriefcase />,
         year: '2025',
-        title: 'Desenvolvedora Full Stack',
+        title: 'Analista de Dados',
         company: 'ACI Contabilidade',
+        description: 'ETL, SQL, Python (Pandas/NumPy) e dashboards em Power BI para indicadores estratégicos.',
+      },
+      {
+        icon: <FaBriefcase />,
+        year: '2025',
+        title: 'Desenvolvedora Back-end',
+        company: 'Taxmed',
         description: 'Desenvolvimento de um sistema de automação para relatórios contábeis, com extração de dados, processamento e geração de relatórios inteligentes.',
       },
       {
@@ -90,11 +97,19 @@ export default function Journey() {
         company: 'Unifor',
         description: 'Degree focused on software development, algorithms, data structures, and computer fundamentals.',
       },
+      
       {
         icon: <FaBriefcase />,
         year: '2025',
-        title: 'Full Stack Developer',
+        title: 'Data Analyst',
         company: 'ACI Contabilidade',
+        description: 'ETL, SQL, Python (Pandas/NumPy) and dashboards in Power BI for strategic indicators.',
+      },
+      {
+        icon: <FaBriefcase />,
+        year: '2025',
+        title: 'Back-end Developer',
+        company: 'Taxmed',
         description: 'Development of an automation system for accounting reports, with data extraction, processing, and intelligent report generation.',
       },
       {
@@ -155,11 +170,19 @@ export default function Journey() {
         company: 'Unifor',
         description: 'Studium mit Schwerpunkt auf Softwareentwicklung, Algorithmen, Datenstrukturen und Grundlagen der Informatik.',
       },
+      
       {
         icon: <FaBriefcase />,
         year: '2025',
-        title: 'Full-Stack-Entwickler',
+        title: 'Datenanalyst',
         company: 'ACI Contabilidade',
+        description: 'ETL, SQL, Python (Pandas/NumPy) und Dashboards in Power BI für strategische Indikatoren.',
+      },
+      {
+        icon: <FaBriefcase />,
+        year: '2025',
+        title: 'Back-End-Entwickler',
+        company: 'Taxmed',
         description: 'Entwicklung eines Automatisierungssystems für Buchhaltungsberichte mit Datenextraktion, -verarbeitung und intelligenter Berichterstellung.',
       },
       {
