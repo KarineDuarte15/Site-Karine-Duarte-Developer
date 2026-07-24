@@ -37,6 +37,22 @@ const eventImages = [
   { src: '/profile27.jpeg', alt: 'Front-end Day 2025' },
   { src: '/profile28.jpeg', alt: 'Reportagem balanço geral game jam' },
   { src: '/profile29.jpeg', alt: 'Front-end Day 2025' },
+  { src: '/profile30.jpeg', alt: 'Hackathon Game Jam' },
+  { src: '/profile31.jpeg', alt: 'hackathon Coda CE' },
+  { src: '/profile32.jpeg', alt: 'hackathon Coda CE' },
+  { src: '/profile33.jpeg', alt: 'hackathon Coda CE' },
+  { src: '/profile34.jpeg', alt: 'hackathon Coda CE' },
+  { src: '/profile35.jpeg', alt: 'hackathon Coda CE' },
+  { src: '/profile36.jpeg', alt: 'hackathon Coda CE' },
+  { src: '/profile37.jpeg', alt: 'hackathon Coda CE' },
+  { src: '/profile38.jpeg', alt: 'hackathon Coda CE' },
+  { src: '/profile39.jpeg', alt: 'hackathon Coda CE' },
+  { src: '/profile40.jpeg', alt: 'hackathon Coda CE' },
+  { src: '/profile41.jpeg', alt: 'hackathon Coda CE' },
+  { src: '/profile42.jpeg', alt: 'hackathon Coda CE' },
+  { src: '/profile43.jpeg', alt: 'hackathon Coda CE' },
+  { src: '/profile44.jpeg', alt: 'hackathon Coda CE' },
+  { src: '/profile45.jpeg', alt: 'hackathon Coda CE' }
 ];
 
 const allImages = [...eventImages, ...eventImages];
