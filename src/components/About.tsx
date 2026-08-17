@@ -4,16 +4,36 @@
 import RevealOnScroll from './RevealOnScroll';
 import { useLanguage } from '@/contexts/LanguageContext';
 
-import { FaDownload, FaCog, FaJava, FaChartBar, FaFileAlt, FaGraduationCap, FaUniversity, FaTable, FaLaptopCode } from 'react-icons/fa';
+import { 
+  FaDownload, 
+  FaCog, 
+  FaJava, 
+  FaChartBar, 
+  FaFileAlt, 
+  FaGraduationCap, 
+  FaUniversity, 
+  FaTable, 
+  FaLaptopCode,
+  FaDatabase,
+  FaProjectDiagram,
+  FaCheckCircle
+} from 'react-icons/fa';
 import {
   SiPython, SiFastapi, SiDjango, SiJavascript, SiReact, SiSpring, SiNodedotjs,
   SiExpress, SiTypescript, SiNextdotjs, SiHtml5, SiCss3, SiTailwindcss, SiGit,
-  SiGithub, SiMongodb, SiOracle, SiPostgresql, SiMysql, SiDocker, SiSupabase, SiTableau
+  SiGithub, SiMongodb, SiOracle, SiPostgresql, SiMysql, SiDocker, SiSupabase, 
+  SiTableau, SiApachespark, SiApachekafka, SiApacheairflow, SiDbt, SiGooglecloud,
+  SiAmazonwebservices
 } from 'react-icons/si';
 import ParticlesBackground from './ParticlesBackground';
 
 const skills = [
-  "Python", "FastAPI", "Django", "JavaScript", "React", "Java", "Spring Boot", "Node.js", "Express.js", "TypeScript", "Next.js", "HTML", "CSS", "TailwindCSS", "Git", "GitHub", "SQL", "NoSQL", "Oracle", "PostgreSQL", "MySQL", "Docker", "Supabase", "Pandas", "Power BI", "Tableau", "Agile Methodologies", "Scrum", "ETL"
+  "Python", "FastAPI", "Django", "SQL", "PostgreSQL", "MySQL", "Oracle", "SQL Server",
+  "NoSQL", "Pandas", "Power BI", "Tableau", "ETL / ELT", "Apache Spark", "Apache Airflow",
+  "dbt", "Apache Kafka", "BigQuery", "Snowflake", "Docker", "Git", "GitHub", "AWS",
+  "Google Cloud", "Data Storytelling", "EDA", "Star Schema", "Supabase", "JavaScript", 
+  "TypeScript", "React", "Next.js", "Java", "Spring Boot", "Node.js", "TailwindCSS", 
+  "Scrum", "Kanban"
 ];
 
 const skillIcons: Record<string, React.ElementType> = {
@@ -37,15 +57,27 @@ const skillIcons: Record<string, React.ElementType> = {
   "Oracle": SiOracle,
   "PostgreSQL": SiPostgresql,
   "MySQL": SiMysql,
+  "SQL Server": FaDatabase,
   "Docker": SiDocker,
   "Supabase": SiSupabase,
   "Power BI": FaChartBar,
   "Tableau": SiTableau,
   "Pandas": FaTable,
-  "SQL": FaCog,
-  "Agile Methodologies": FaCog,
+  "SQL": FaDatabase,
+  "ETL / ELT": FaProjectDiagram,
+  "Apache Spark": SiApachespark,
+  "Apache Airflow": SiApacheairflow,
+  "dbt": SiDbt,
+  "Apache Kafka": SiApachekafka,
+  "BigQuery": SiGooglecloud,
+  "Snowflake": FaDatabase,
+  "AWS": SiAmazonwebservices,
+  "Google Cloud": SiGooglecloud,
+  "Data Storytelling": FaChartBar,
+  "EDA": FaTable,
+  "Star Schema": FaProjectDiagram,
   "Scrum": FaCog,
-  "ETL": FaCog
+  "Kanban": FaCog
 };
 
 export default function About() {
@@ -81,64 +113,92 @@ export default function About() {
               </div>
             </RevealOnScroll>
 
-            {/* FORMAÇÃO ACADÊMICA - Agora com 2 cards lado a lado */}
+            {/* FORMAÇÃO ACADÊMICA - 3 cards lado a lado no desktop */}
             <RevealOnScroll delay={0.2}>
-              <div className="w-full flex flex-col md:flex-row gap-6 mb-10 justify-center">
+              <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
 
-                {/* Card 1: Ciência da Computação */}
-                <div className="flex-1 bg-gradient-to-b from-[#1B263B] to-[#0D1B2A] p-8 rounded-2xl border border-[#F4C542]/30 shadow-lg relative overflow-hidden group hover:border-[#F4C542] transition-colors flex flex-col items-center justify-center text-center">
+                {/* Card 1: Análise e Desenvolvimento de Sistemas (Concluído) */}
+                <div className="bg-gradient-to-b from-[#1B263B] to-[#0D1B2A] p-8 rounded-2xl border border-[#F4C542]/30 shadow-lg relative overflow-hidden group hover:border-[#F4C542] transition-colors flex flex-col items-center justify-between text-center">
                   <FaLaptopCode className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-9xl text-white/5 rotate-0 pointer-events-none" />
 
-                  <div className="relative z-10 flex flex-col items-center">
+                  <div className="relative z-10 flex flex-col items-center w-full">
                     <div className="bg-[#F4C542] p-4 rounded-full text-[#0D1B2A] shadow-lg mb-4">
                       <FaGraduationCap size={32} />
                     </div>
                     <span className="text-[#F4C542] font-mono text-xs uppercase tracking-[0.2em] mb-3 border-b border-[#F4C542]/20 pb-1">
                       Graduação
                     </span>
-                    <h3 className="text-white font-bold text-xl md:text-2xl font-heading mb-4 leading-tight">
-                      Ciências da Computação
+                    <h3 className="text-white font-bold text-xl font-heading mb-4 leading-tight">
+                      Análise e Desenv. de Sistemas
                     </h3>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-auto text-slate-400 text-sm font-mono">
-                      <span className="flex items-center gap-2 bg-[#112240] px-4 py-2 rounded-full border border-slate-700">
-                        <FaUniversity className="text-cyan-400" /> UNIFOR
-                      </span>
-                      <span className="flex items-center gap-2 bg-green-500/10 text-green-400 px-4 py-2 rounded-full border border-green-500/20">
-                        <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> Em Curso
-                      </span>
-                    </div>
+                  </div>
+
+                  <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-2 mt-auto text-slate-400 text-sm font-mono w-full">
+                    <span className="flex items-center gap-2 bg-[#112240] px-3 py-1.5 rounded-full border border-slate-700 text-xs">
+                      <FaUniversity className="text-cyan-400" /> UNIFOR
+                    </span>
+                    <span className="flex items-center gap-2 bg-emerald-500/10 text-emerald-400 px-3 py-1.5 rounded-full border border-emerald-500/20 text-xs">
+                      <FaCheckCircle className="text-emerald-400" /> Concluído (2025)
+                    </span>
                   </div>
                 </div>
 
-                {/* Card 2: Pós-graduação */}
-                <div className="flex-1 bg-gradient-to-b from-[#1B263B] to-[#0D1B2A] p-8 rounded-2xl border border-[#F4C542]/30 shadow-lg relative overflow-hidden group hover:border-[#F4C542] transition-colors flex flex-col items-center justify-center text-center">
+                {/* Card 2: Ciência da Computação (Em Curso) */}
+                <div className="bg-gradient-to-b from-[#1B263B] to-[#0D1B2A] p-8 rounded-2xl border border-[#F4C542]/30 shadow-lg relative overflow-hidden group hover:border-[#F4C542] transition-colors flex flex-col items-center justify-between text-center">
+                  <FaLaptopCode className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-9xl text-white/5 rotate-0 pointer-events-none" />
+
+                  <div className="relative z-10 flex flex-col items-center w-full">
+                    <div className="bg-[#F4C542] p-4 rounded-full text-[#0D1B2A] shadow-lg mb-4">
+                      <FaGraduationCap size={32} />
+                    </div>
+                    <span className="text-[#F4C542] font-mono text-xs uppercase tracking-[0.2em] mb-3 border-b border-[#F4C542]/20 pb-1">
+                      Graduação
+                    </span>
+                    <h3 className="text-white font-bold text-xl font-heading mb-4 leading-tight">
+                      Ciências da Computação
+                    </h3>
+                  </div>
+
+                  <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-2 mt-auto text-slate-400 text-sm font-mono w-full">
+                    <span className="flex items-center gap-2 bg-[#112240] px-3 py-1.5 rounded-full border border-slate-700 text-xs">
+                      <FaUniversity className="text-cyan-400" /> UNIFOR
+                    </span>
+                    <span className="flex items-center gap-2 bg-green-500/10 text-green-400 px-3 py-1.5 rounded-full border border-green-500/20 text-xs">
+                      <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> Em Curso
+                    </span>
+                  </div>
+                </div>
+
+                {/* Card 3: Pós-graduação em Engenharia de Dados (Em Curso) */}
+                <div className="bg-gradient-to-b from-[#1B263B] to-[#0D1B2A] p-8 rounded-2xl border border-[#F4C542]/30 shadow-lg relative overflow-hidden group hover:border-[#F4C542] transition-colors flex flex-col items-center justify-between text-center">
                   <FaUniversity className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-9xl text-white/5 rotate-0 pointer-events-none" />
 
-                  <div className="relative z-10 flex flex-col items-center">
+                  <div className="relative z-10 flex flex-col items-center w-full">
                     <div className="bg-[#F4C542] p-4 rounded-full text-[#0D1B2A] shadow-lg mb-4">
                       <FaGraduationCap size={32} />
                     </div>
                     <span className="text-[#F4C542] font-mono text-xs uppercase tracking-[0.2em] mb-3 border-b border-[#F4C542]/20 pb-1">
                       Pós-graduação
                     </span>
-                    <h3 className="text-white font-bold text-xl md:text-2xl font-heading mb-4 leading-tight">
+                    <h3 className="text-white font-bold text-xl font-heading mb-4 leading-tight">
                       Engenharia de Dados
                     </h3>
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-auto text-slate-400 text-sm font-mono">
-                      <span className="flex items-center gap-2 bg-[#112240] px-4 py-2 rounded-full border border-slate-700">
-                        <FaUniversity className="text-cyan-400" /> UNIFOR
-                      </span>
-                      <span className="flex items-center gap-2 bg-green-500/10 text-green-400 px-4 py-2 rounded-full border border-green-500/20">
-                        <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> Em Curso
-                      </span>
-                    </div>
+                  </div>
+
+                  <div className="relative z-10 flex flex-col sm:flex-row items-center justify-center gap-2 mt-auto text-slate-400 text-sm font-mono w-full">
+                    <span className="flex items-center gap-2 bg-[#112240] px-3 py-1.5 rounded-full border border-slate-700 text-xs">
+                      <FaUniversity className="text-cyan-400" /> UNIFOR
+                    </span>
+                    <span className="flex items-center gap-2 bg-green-500/10 text-green-400 px-3 py-1.5 rounded-full border border-green-500/20 text-xs">
+                      <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span> Em Curso
+                    </span>
                   </div>
                 </div>
 
               </div>
             </RevealOnScroll>
 
-            {/* TECH STACK */}
+            {/* TECH STACK & TOOLS */}
             <RevealOnScroll delay={0.3}>
               <div className="w-full flex flex-col items-center mb-12">
                 <h3 className="text-sm font-mono mb-8 text-slate-400 inline-flex items-center gap-2 uppercase tracking-widest px-6 py-2 rounded-full border border-slate-800 bg-[#0D1B2A]">
@@ -158,10 +218,9 @@ export default function About() {
               </div>
             </RevealOnScroll>
 
-            {/* BOTÕES DE AÇÃO - Links Atualizados para facilitar */}
+            {/* BOTÕES DE AÇÃO */}
             <RevealOnScroll delay={0.4}>
               <div className="flex flex-col sm:flex-row justify-center items-center gap-4 w-full">
-                {/* Agora o link aponta para um nome fixo. Substitua o PDF na pasta public com este exato nome! */}
                 <a
                   href="/Curriculo_Karine_Duarte.pdf"
                   download
@@ -171,7 +230,6 @@ export default function About() {
                   {t.downloadCv}
                 </a>
 
-                {/* Agora o link aponta para um nome fixo. Substitua o PDF na pasta public com este exato nome! */}
                 <a
                   href="/Carta_Apresentacao_Karine_Duarte.pdf"
                   download
