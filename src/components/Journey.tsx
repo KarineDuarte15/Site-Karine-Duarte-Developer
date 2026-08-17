@@ -11,6 +11,7 @@ export default function Journey() {
   const { t, language } = useLanguage();
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isScrolling, setIsScrolling] = useState(false);
 
   const journeyDataMap = {
     pt: [
