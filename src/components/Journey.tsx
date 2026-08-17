@@ -1,13 +1,16 @@
 // src/components/Journey.tsx
 'use client';
 
+import { useRef, useEffect, useState } from 'react';
 import ParticlesBackground from './ParticlesBackground';
 import RevealOnScroll from './RevealOnScroll';
-import { FaBriefcase, FaGraduationCap } from 'react-icons/fa';
+import { FaBriefcase, FaGraduationCap, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function Journey() {
   const { t, language } = useLanguage();
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const journeyDataMap = {
     pt: [
@@ -97,7 +100,6 @@ export default function Journey() {
         company: 'Unifor',
         description: 'Degree focused on software development, algorithms, data structures, and computer fundamentals.',
       },
-      
       {
         icon: <FaBriefcase />,
         year: '2025',
@@ -170,7 +172,6 @@ export default function Journey() {
         company: 'Unifor',
         description: 'Studium mit Schwerpunkt auf Softwareentwicklung, Algorithmen, Datenstrukturen und Grundlagen der Informatik.',
       },
-      
       {
         icon: <FaBriefcase />,
         year: '2025',
@@ -228,19 +229,70 @@ export default function Journey() {
         description: 'Technische Ausbildung zur Systemprogrammierung.',
       },
     ],
-  }
+  };
 
-  const selectedData = journeyDataMap[language] && journeyDataMap[language].length > 0
-    ? journeyDataMap[language]
-    : journeyDataMap['pt'];
+  const selectedData =
+    journeyDataMap[language] && journeyDataMap[language].length > 0
+      ? journeyDataMap[language]
+      : journeyDataMap['pt'];
 
-  const journeyDisplayData = [...selectedData, ...selectedData];
+  // Intercepta a rodinha do mouse para transformar rolagem vertical em horizontal
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      if (e.deltaY === 0) return;
+
+      const maxScrollLeft = container.scrollWidth - container.clientWidth;
+      const isScrollingRight = e.deltaY > 0 && container.scrollLeft < maxScrollLeft;
+      const isScrollingLeft = e.deltaY < 0 && container.scrollLeft > 0;
+
+      if (isScrollingRight || isScrollingLeft) {
+        e.preventDefault();
+        container.scrollLeft += e.deltaY;
+      }
+    };
+
+    const handleScroll = () => {
+      const cardWidth = 482; // 450px de largura + 32px de margem
+      const current = Math.round(container.scrollLeft / cardWidth);
+      setActiveIndex(Math.min(current, selectedData.length - 1));
+    };
+
+    container.addEventListener('wheel', handleWheel, { passive: false });
+    container.addEventListener('scroll', handleScroll);
+
+    return () => {
+      container.removeEventListener('wheel', handleWheel);
+      container.removeEventListener('scroll', handleScroll);
+    };
+  }, [selectedData.length]);
+
+  // Função para rolar via botões de seta
+  const handleScrollButton = (direction: 'left' | 'right') => {
+    if (!scrollContainerRef.current) return;
+    const scrollAmount = 482;
+    scrollContainerRef.current.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth',
+    });
+  };
+
+  // Função para rolar direto ao clicar em um pontinho
+  const handleDotClick = (index: number) => {
+    if (!scrollContainerRef.current) return;
+    const cardWidth = 482;
+    scrollContainerRef.current.scrollTo({
+      left: index * cardWidth,
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <section id="journey" className="relative overflow-hidden">
       <ParticlesBackground id="particles-journey">
         <div className="py-24 relative z-10">
-
           <div className="container mx-auto px-6 mb-16">
             <RevealOnScroll>
               <h2 className="text-4xl font-bold text-center font-heading text-[#F4C542]">
@@ -250,59 +302,104 @@ export default function Journey() {
           </div>
 
           <RevealOnScroll delay={0.2}>
+            <div className="relative w-full group">
+              {/* Botão de seta para a esquerda */}
+              <button
+                type="button"
+                onClick={() => handleScrollButton('left')}
+                aria-label="Rolar para a esquerda"
+                className="hidden md:flex absolute left-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-[#0D1B2A]/90 border border-[#F4C542]/40 text-[#F4C542] items-center justify-center shadow-[0_0_15px_rgba(244,197,66,0.2)] hover:bg-[#F4C542] hover:text-[#0D1B2A] hover:scale-110 transition-all duration-300 backdrop-blur-md"
+              >
+                <FaChevronLeft size={18} />
+              </button>
 
-            <div className="group relative w-full overflow-hidden py-20">
+              {/* Botão de seta para a direita */}
+              <button
+                type="button"
+                onClick={() => handleScrollButton('right')}
+                aria-label="Rolar para a direita"
+                className="hidden md:flex absolute right-4 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-[#0D1B2A]/90 border border-[#F4C542]/40 text-[#F4C542] items-center justify-center shadow-[0_0_15px_rgba(244,197,66,0.2)] hover:bg-[#F4C542] hover:text-[#0D1B2A] hover:scale-110 transition-all duration-300 backdrop-blur-md"
+              >
+                <FaChevronRight size={18} />
+              </button>
 
-              <div className="relative inline-flex animate-marquee hover:[animation-play-state:paused]">
+              {/* Container de rolagem sem barra visível */}
+              <div
+                ref={scrollContainerRef}
+                className="w-full overflow-x-auto overflow-y-hidden py-16 scroll-smooth touch-pan-x select-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+              >
+                <div className="relative inline-flex px-12 min-w-full">
+                  {/* Linha central da timeline */}
+                  <div className="absolute top-1/2 left-0 h-[2px] w-full bg-slate-800 -translate-y-1/2 z-0"></div>
+                  <div className="absolute top-1/2 left-0 h-[2px] w-full bg-gradient-to-r from-transparent via-[#F4C542] to-transparent -translate-y-1/2 z-0 opacity-50 blur-sm"></div>
 
-                <div className="absolute top-1/2 left-0 h-[2px] w-full bg-slate-800 -translate-y-1/2 z-0"></div>
-                <div className="absolute top-1/2 left-0 h-[2px] w-full bg-gradient-to-r from-transparent via-[#F4C542] to-transparent -translate-y-1/2 z-0 opacity-50 blur-sm"></div>
-
-                {journeyDisplayData.map((item, index) => (
-                  <div key={index} className="relative flex-shrink-0 w-[500px] h-[500px] flex items-center justify-center mx-8">
-
-                    <div className="absolute top-1/2 -translate-y-1/2 z-20 left-1/2 -translate-x-1/2">
-                      <div className="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#0D1B2A] border-2 border-[#F4C542] shadow-[0_0_15px_rgba(244,197,66,0.3)] z-20 group-hover:scale-110 transition-transform duration-300">
-                        <div className="text-[#F4C542] text-xl relative z-10">{item.icon}</div>
-                        <div className="absolute inset-0 rounded-full bg-[#F4C542] opacity-20 animate-ping"></div>
-                      </div>
-                    </div>
-
+                  {selectedData.map((item, index) => (
                     <div
-                      className={`absolute left-1/2 -translate-x-1/2 w-96 p-6 rounded-xl 
-                      bg-[#112240]/90 backdrop-blur-md border border-slate-700/50
-                      hover:border-[#F4C542]/50 hover:shadow-[0_0_30px_rgba(244,197,66,0.1)]
-                      transition-all duration-300 z-10 group/card
-                      ${index % 2 === 0 ? 'bottom-[60%] mb-8' : 'top-[60%] mt-8'}`}
+                      key={index}
+                      className="relative flex-shrink-0 w-[450px] h-[480px] flex items-center justify-center mx-4"
                     >
+                      {/* Marcador central */}
+                      <div className="absolute top-1/2 -translate-y-1/2 z-20 left-1/2 -translate-x-1/2">
+                        <div className="relative flex items-center justify-center w-14 h-14 rounded-full bg-[#0D1B2A] border-2 border-[#F4C542] shadow-[0_0_15px_rgba(244,197,66,0.3)] z-20 hover:scale-110 transition-transform duration-300">
+                          <div className="text-[#F4C542] text-xl relative z-10">{item.icon}</div>
+                          <div className="absolute inset-0 rounded-full bg-[#F4C542] opacity-20 animate-ping"></div>
+                        </div>
+                      </div>
+
+                      {/* Card de conteúdo */}
                       <div
-                        className={`absolute left-1/2 -translate-x-1/2 w-[2px] bg-gradient-to-b from-[#F4C542]/50 to-transparent h-8
-                        ${index % 2 === 0
-                            ? 'bottom-[-34px] rotate-180'
-                            : 'top-[-34px]'
+                        className={`absolute left-1/2 -translate-x-1/2 w-88 md:w-96 p-6 rounded-xl 
+                        bg-[#112240]/90 backdrop-blur-md border border-slate-700/50
+                        hover:border-[#F4C542]/50 hover:shadow-[0_0_30px_rgba(244,197,66,0.1)]
+                        transition-all duration-300 z-10 group/card
+                        ${index % 2 === 0 ? 'bottom-[58%] mb-6' : 'top-[58%] mt-6'}`}
+                      >
+                        <div
+                          className={`absolute left-1/2 -translate-x-1/2 w-[2px] bg-gradient-to-b from-[#F4C542]/50 to-transparent h-8
+                          ${
+                            index % 2 === 0
+                              ? 'bottom-[-34px] rotate-180'
+                              : 'top-[-34px]'
                           }`}
-                      ></div>
+                        ></div>
 
-                      <div className="flex justify-between items-start mb-2">
-                        <time className="text-sm font-mono font-bold text-[#F4C542] bg-[#F4C542]/10 px-2 py-1 rounded">
-                          {item.year}
-                        </time>
+                        <div className="flex justify-between items-start mb-2">
+                          <time className="text-sm font-mono font-bold text-[#F4C542] bg-[#F4C542]/10 px-2 py-1 rounded">
+                            {item.year}
+                          </time>
+                        </div>
+
+                        <div className="text-xs font-mono text-cyan-500 mb-3 border-b border-slate-700 pb-2">
+                          {`@ ${item.company}`}
+                        </div>
+
+                        <h3 className="text-lg font-bold mb-2 font-heading text-white group-hover/card:text-[#F4C542] transition-colors">
+                          {item.title}
+                        </h3>
+
+                        <p className="text-sm text-slate-400 leading-relaxed font-sans">
+                          {item.description}
+                        </p>
                       </div>
-
-                      <div className="text-xs font-mono text-cyan-500 mb-3 border-b border-slate-700 pb-2">
-                        {`@ ${item.company}`}
-                      </div>
-
-                      <h3 className="text-lg font-bold mb-2 font-heading text-white group-hover/card:text-[#F4C542] transition-colors">
-                        {item.title}
-                      </h3>
-
-                      <p className="text-sm text-slate-400 leading-relaxed font-sans">
-                        {item.description}
-                      </p>
                     </div>
+                  ))}
+                </div>
+              </div>
 
-                  </div>
+              {/* Pontinhos indicadores amarelos */}
+              <div className="flex justify-center items-center gap-2 mt-4">
+                {selectedData.map((_, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    onClick={() => handleDotClick(index)}
+                    aria-label={`Ir para a etapa ${index + 1}`}
+                    className={`h-2.5 rounded-full transition-all duration-300 ${
+                      activeIndex === index
+                        ? 'w-8 bg-[#F4C542] shadow-[0_0_10px_rgba(244,197,66,0.5)]'
+                        : 'w-2.5 bg-slate-700 hover:bg-[#F4C542]/50'
+                    }`}
+                  />
                 ))}
               </div>
             </div>
